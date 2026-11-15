@@ -3,680 +3,1791 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Falak — Visual Resume</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Falak — Psychology &amp; Behavioral Data Science</title>
+<meta name="description" content="Falak is an M.S. student in Psychology: Data Science in Human Behavior at UW–Madison and a Michigan State psychology graduate (Highest Honors) with research experience on a NASA-funded team-science project, survey research, and perception studies.">
+<meta name="author" content="Falak">
+<link rel="canonical" href="https://falak1720.github.io/falak-portfolio/">
+<meta name="theme-color" content="#f6f3ee" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Falak — Psychology & Behavioral Data Science">
+<meta property="og:description" content="Researcher studying human behavior with data. M.S. candidate at UW–Madison · B.S. Psychology, Michigan State (Highest Honors).">
+<meta property="og:url" content="https://falak1720.github.io/falak-portfolio/">
+<meta property="og:image" content="https://falak1720.github.io/falak-portfolio/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2314213d'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' font-style='italic' fill='%23f6f3ee' text-anchor='middle'%3EF%3C/text%3E%3Ccircle cx='47' cy='19' r='5' fill='%236c9be0'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@500&text=%D9%81%D9%84%DA%A9&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Falak",
+  "alternateName": "Fnu Falak",
+  "jobTitle": "Graduate Student, Psychology: Data Science in Human Behavior",
+  "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Wisconsin–Madison" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Michigan State University" },
+  "email": "mailto:falak@wisc.edu",
+  "url": "https://falak1720.github.io/falak-portfolio/",
+  "image": "https://falak1720.github.io/falak-portfolio/assets/falak.jpg",
+  "sameAs": ["https://www.linkedin.com/in/fnufalak", "https://github.com/falak1720"],
+  "knowsAbout": ["Psychology", "Behavioral research", "Survey methodology", "Statistics", "SPSS", "R", "Python", "Quarto"]
+}
+</script>
+
+<script>
+  /* Apply saved theme before paint to avoid a flash. */
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+    document.documentElement.classList.add('js');
+  })();
+</script>
+
 <style>
+  /* =========================================================
+     Design tokens
+     ========================================================= */
   :root {
-    --bg: #0d1424;
-    --surface: #0b1930;
-    --card: rgba(10, 22, 42, 0.88);
-    --border: rgba(174, 211, 242, 0.22);
-    --accent: #c5def5;
-    --accent2: #edf6ff;
-    --accent3: #5b8fc7;
-    --text: #f2f8ff;
-    --muted: #bfd2e8;
-    --soft: rgba(125, 190, 232, 0.14);
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
+    --bg: #f6f3ee;
+    --bg-alt: #efeae2;
+    --surface: #fffdf9;
+    --ink: #14213d;
+    --ink-soft: #2c3a57;
+    --muted: #5d6679;
+    --line: #e2dbcf;
+    --line-strong: #cfc6b7;
+    --accent: #2f5d9e;
+    --accent-ink: #ffffff;
+    --accent-soft: #e5edf8;
+    --warm: #b8653a;
+    --warm-soft: #f6e6db;
+    --ok: #2e7d5b;
+    --shadow: 0 1px 2px rgba(20,33,61,.06), 0 8px 24px rgba(20,33,61,.06);
+    --shadow-lg: 0 2px 4px rgba(20,33,61,.06), 0 24px 48px rgba(20,33,61,.12);
 
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+    --radius: 14px;
+    --radius-lg: 22px;
+    --wrap: 1120px;
+    --gutter: clamp(16px, 4vw, 32px);
+    --ease: cubic-bezier(.22, 1, .36, 1);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b1220;
+      --bg-alt: #0f1829;
+      --surface: #121c30;
+      --ink: #edf1f8;
+      --ink-soft: #cdd6e6;
+      --muted: #96a3ba;
+      --line: #213049;
+      --line-strong: #2d3f5e;
+      --accent: #8fb6ee;
+      --accent-ink: #0b1220;
+      --accent-soft: #17284a;
+      --warm: #e7a079;
+      --warm-soft: #3a2519;
+      --ok: #6fcf9f;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+      --shadow-lg: 0 2px 4px rgba(0,0,0,.3), 0 24px 48px rgba(0,0,0,.4);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b1220;
+    --bg-alt: #0f1829;
+    --surface: #121c30;
+    --ink: #edf1f8;
+    --ink-soft: #cdd6e6;
+    --muted: #96a3ba;
+    --line: #213049;
+    --line-strong: #2d3f5e;
+    --accent: #8fb6ee;
+    --accent-ink: #0b1220;
+    --accent-soft: #17284a;
+    --warm: #e7a079;
+    --warm-soft: #3a2519;
+    --ok: #6fcf9f;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    --shadow-lg: 0 2px 4px rgba(0,0,0,.3), 0 24px 48px rgba(0,0,0,.4);
+    color-scheme: dark;
+  }
+
+  /* =========================================================
+     Base
+     ========================================================= */
+  *, *::before, *::after { box-sizing: border-box; }
+  * { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
   body {
-    font-family: 'Manrope', sans-serif;
-    background:
-      radial-gradient(circle at top left, rgba(125, 211, 252, 0.34), transparent 36%),
-      radial-gradient(circle at top right, rgba(59, 130, 246, 0.2), transparent 30%),
-      linear-gradient(160deg, #3b82b5 0%, #16416f 38%, #082448 68%, #020817 100%);
-    background-size: 140% 140%, 140% 140%, 180% 180%;
-    animation: skyShift 16s ease-in-out infinite alternate;
-    color: var(--text);
-    min-height: 100vh;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     overflow-x: hidden;
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath fill='%23f4ecff' d='M14 2l1.7 4.8L21 8.5l-3.7 3 1.2 4.7L14 13.8l-4.5 2.4 1.2-4.7-3.7-3 5.3-1.7z'/%3E%3C/svg%3E") 14 14, auto;
+    transition: background-color .3s ease, color .3s ease;
   }
-  a, button, .card, .chip, .skill-pill, .contact-card {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Ccircle cx='15' cy='15' r='7' fill='%23cda3ff'/%3E%3Ccircle cx='15' cy='15' r='3.3' fill='%23fff4ff'/%3E%3C/svg%3E") 15 15, pointer;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.06;
-    background-image: radial-gradient(rgba(255,255,255,0.8) 0.45px, transparent 0.45px);
-    background-size: 3px 3px;
-  }
-  @keyframes skyShift {
-    0% { background-position: 0% 0%, 100% 0%, 0% 0%; }
-    100% { background-position: 12% 8%, 86% 12%, 100% 100%; }
-  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  ul { list-style: none; }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 
-  /* ===== TOP HEADER ===== */
-  .top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 18px;
-    padding: 24px 28px;
-    background: linear-gradient(90deg, rgba(7, 31, 62, 0.94), rgba(9, 39, 77, 0.92));
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    backdrop-filter: blur(10px);
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+  .skip-link {
+    position: absolute; left: 12px; top: -48px; z-index: 100;
+    background: var(--ink); color: var(--bg); padding: 10px 14px; border-radius: 8px;
+    text-decoration: none; font-weight: 600; transition: top .2s;
   }
+  .skip-link:focus { top: 12px; }
 
-  .header-info { flex: 1; }
-  .header-info h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.35rem;
-    font-weight: 600;
-    background: linear-gradient(120deg, #fff 0%, #c7e7ff 55%, #78c7f2 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    line-height: 1;
-  }
-  .header-info .sub {
-    font-size: .78rem;
-    color: var(--muted);
-    margin-top: 3px;
-    letter-spacing: .05em;
-  }
-  .header-badges {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-top: 6px;
-  }
-  .hbadge {
-    font-size: .7rem;
-    padding: 3px 10px;
-    border-radius: 20px;
-    background: rgba(37,99,235,0.14);
-    border: 1px solid rgba(96,165,250,0.3);
-    color: var(--accent2);
-    transition: transform .2s ease, background .2s ease;
-  }
-  .hbadge:hover { transform: translateY(-1px); background: rgba(37,99,235,0.26); }
-  .gpa-hbadge {
-    background: linear-gradient(135deg,#123b68,#1e5aa0);
-    border: none;
-    color: white;
-    font-weight: 600;
-  }
-  .avatar-panel {
-    background: linear-gradient(135deg, rgba(37,99,235,0.3), rgba(8,27,54,0.72));
-    border: 1px solid rgba(147,197,253,0.35);
-    border-radius: 16px;
-    padding: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 12px 34px rgba(3, 18, 42, 0.42);
-    animation: floaty 4.2s ease-in-out infinite;
-  }
-  .avatar-photo {
-    width: 90px;
-    height: 90px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(219, 234, 254, 0.4);
-    box-shadow: 0 8px 20px rgba(4, 16, 36, 0.5);
-  }
-  .avatar-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    image-orientation: from-image;
-  }
-  @keyframes floaty {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
-  }
-  @media(max-width: 760px) {
-    .top-bar {
-      padding: 18px 18px;
-    }
-    .header-info h1 {
-      font-size: 2rem;
-    }
-    .avatar-panel {
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
-
-  /* ===== MAIN CONTENT ===== */
-  .main-content {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 24px 28px 48px;
-  }
-
-  .resume-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-  }
-  .full-width { grid-column: 1 / -1; }
-
-  @media(max-width: 700px) {
-    .resume-grid { grid-template-columns: 1fr; }
-    .full-width { grid-column: 1; }
-  }
-
-  /* ===== CARDS ===== */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 18px 20px;
-    margin-bottom: 12px;
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(7px);
-    transition: border-color .25s, box-shadow .3s, transform .15s;
-  }
-  .card::before {
-    content: '';
-    position: absolute; top:0; left:0;
-    width: 3px; height: 100%;
-    background: linear-gradient(180deg,#123b68,#081d3b);
-    border-radius: 3px 0 0 3px;
-  }
-  .card:hover { border-color: rgba(96,165,250,0.5); box-shadow: 0 12px 28px rgba(3, 18, 42, 0.5); }
-  .card-title { font-weight: 600; font-size: .95rem; color: #e7f2ff; margin-bottom: 3px; }
-  .card-sub { font-size: .78rem; color: var(--accent); margin-bottom: 8px; font-weight: 500; }
-  .card-body { font-size: .82rem; color: #c7d8eb; line-height: 1.75; }
-  .card-body li { list-style:none; padding-left:14px; position:relative; margin-bottom:3px; }
-  .card-body li::before { content:'◆'; position:absolute; left:0; color:#60b9ec; font-size:6px; top:5px; }
-  .project-link {
-    display: inline-block;
-    margin-top: 8px;
-    font-size: .8rem;
-    color: #dbeafe;
-    text-decoration: none;
-    border-bottom: 1px dashed rgba(219,234,254,0.75);
-  }
-  .project-link:hover {
-    color: #ffffff;
-    border-bottom-color: #ffffff;
-  }
-
-  .section-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--accent2);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(96,165,250,0.42), transparent);
-    margin-left: 4px;
-  }
-
-  /* CONTACT */
-  .contact-grid {
-    display: grid;
-    gap: 12px;
-    margin-bottom: 16px;
-  }
-  .contact-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 16px 18px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: border-color .25s;
-  }
-  .contact-card:hover { border-color: rgba(96,165,250,0.45); }
-  .contact-icon {
-    width: 36px; height: 36px;
-    border-radius: 10px;
-    background: rgba(10,37,72,0.82);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; flex-shrink: 0;
-  }
-  .contact-text .label { font-size: .68rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
-  .contact-text .val { font-size: .82rem; color: var(--text); margin-top: 1px; word-break: break-all; }
-  .contact-text .val a {
-    color: inherit;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(183,215,244,0.45);
-    transition: color .2s ease, border-color .2s ease;
-  }
-  .contact-text .val a:hover {
-    color: #eff8ff;
-    border-color: rgba(239,248,255,0.75);
-  }
-
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
-  }
-  .skill-pill {
-    background: linear-gradient(135deg,rgba(6,23,47,0.92),rgba(11,39,72,0.78));
-    border: 1px solid rgba(96,165,250,0.3);
-    border-radius: 10px;
-    padding: 10px 12px;
-    text-align: center;
-    font-size: .78rem;
-    color: #d2e8fb;
-    transition: all .2s;
-  }
-  .skill-pill:hover { background: linear-gradient(135deg,rgba(29,78,216,0.48),rgba(14,116,184,0.35)); border-color:rgba(96,165,250,0.58); transform:scale(1.04); }
-
-  /* LANGUAGES */
-  .lang-row { display:flex; align-items:center; gap:14px; margin-bottom:14px; }
-  .lang-label { min-width:60px; font-size:.85rem; color:#d2e8fb; font-weight:500; }
-  .lang-bar-bg { flex:1; height:7px; background:rgba(255,255,255,0.08); border-radius:8px; overflow:hidden; }
-  .lang-bar-fill { height:100%; border-radius:8px; background:linear-gradient(90deg,#1d4ed8,#38bdf8); width:0; transition:width 1.2s ease-out; }
-  .lang-tag { font-size:.72rem; color:var(--accent); min-width:50px; text-align:right; }
-
-  /* CERTS / ACTIVITIES */
-  .chip {
-    display: inline-block;
-    background: rgba(8,30,58,0.8);
-    border: 1px solid rgba(96,165,250,0.3);
-    border-radius: 20px;
-    padding: 5px 12px;
+  .eyebrow {
+    font-family: var(--font-mono);
     font-size: .75rem;
-    color: #c7def4;
-    margin: 4px 4px 0 0;
-    transition: all .2s;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: inline-flex; align-items: center; gap: 10px;
   }
-  a.chip { color: var(--accent2); text-decoration: underline; text-decoration-style: dashed; text-underline-offset: 3px; }
-  .chip:hover { background: rgba(29,78,216,0.32); border-color: rgba(96,165,250,0.55); }
+  .eyebrow::before { content: ''; width: 22px; height: 1px; background: currentColor; }
 
-  /* EDU */
-  .edu-card {
-    background: linear-gradient(135deg,rgba(36,106,164,0.32),rgba(5,20,42,0.9));
-    border: 1px solid rgba(110,190,235,0.35);
-    border-radius: 16px;
-    padding: 22px 24px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    flex-wrap: nowrap;
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 500; letter-spacing: -.015em; line-height: 1.12; }
+  h2 { font-size: clamp(1.9rem, 3.6vw, 2.6rem); font-variation-settings: 'opsz' 96; }
+  h3 { font-size: 1.2rem; font-variation-settings: 'opsz' 36; }
+  em.accent { font-style: italic; color: var(--accent); font-weight: 400; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 12px 20px; border-radius: 999px;
+    font-weight: 600; font-size: .92rem; text-decoration: none;
+    border: 1px solid transparent; cursor: pointer; font-family: inherit;
+    transition: transform .2s var(--ease), background-color .2s, border-color .2s, color .2s, box-shadow .2s;
   }
-  .edu-logo {
-    width: 56px; height: 56px;
-    border-radius: 14px;
-    background: linear-gradient(135deg,#0b2d57,#164e83);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 24px; flex-shrink: 0;
+  .btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+  .btn-ghost { border-color: var(--line-strong); color: var(--ink); background: transparent; }
+  .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .btn:active { transform: translateY(0) scale(.98); }
+
+  .icon-btn {
+    width: 40px; height: 40px; border-radius: 999px;
+    display: inline-grid; place-items: center;
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    cursor: pointer; transition: border-color .2s, transform .2s var(--ease);
   }
-  .edu-info { flex: 1; min-width: 0; }
-  .edu-info h3 { font-family:'Cormorant Garamond',serif; font-size:1.15rem; color:#e7f2ff; margin-bottom:4px; }
-  .edu-info p { font-size:.8rem; color:var(--accent); margin-bottom:8px; }
-  .gpa-badge {
-    display: inline-block;
-    background: linear-gradient(135deg,#123b68,#1e5aa0);
-    border-radius: 10px;
-    padding: 4px 12px;
-    font-size: .78rem;
-    font-weight: 600;
-    color: white;
+  .icon-btn:hover { border-color: var(--ink); transform: translateY(-1px); }
+  .icon-btn svg { width: 18px; height: 18px; }
+
+  /* =========================================================
+     Navigation
+     ========================================================= */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(1.4) blur(14px);
+    -webkit-backdrop-filter: saturate(1.4) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s, background-color .3s;
+  }
+  .nav.scrolled { border-bottom-color: var(--line); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+  .brand {
+    display: inline-flex; align-items: center; gap: 10px;
+    text-decoration: none; font-family: var(--font-display); font-size: 1.25rem; font-weight: 500;
+  }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 10px; background: var(--ink); color: var(--bg);
+    display: grid; place-items: center; font-style: italic; font-size: 1.15rem; position: relative;
+  }
+  .brand-mark::after {
+    content: ''; position: absolute; top: 6px; right: 6px; width: 6px; height: 6px;
+    border-radius: 50%; background: #6c9be0;
+  }
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-links a {
+    text-decoration: none; font-size: .9rem; font-weight: 500; color: var(--muted);
+    padding: 8px 12px; border-radius: 999px; transition: color .2s, background-color .2s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); background: var(--bg-alt); }
+  .nav-actions { display: flex; align-items: center; gap: 8px; }
+  .nav-cta { padding: 9px 16px; font-size: .86rem; }
+  .menu-btn { display: none; }
+  .theme-toggle .moon { display: none; }
+  :root[data-theme="dark"] .theme-toggle .sun { display: none; }
+  :root[data-theme="dark"] .theme-toggle .moon { display: block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .theme-toggle .sun { display: none; }
+    :root:not([data-theme="light"]) .theme-toggle .moon { display: block; }
   }
 
-  /* two-col layout for experience */
-  .exp-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  @media(max-width:620px){ .exp-cols { grid-template-columns:1fr; } }
-
-  /* Stars background */
-  .stars-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
-  .star { position:absolute; border-radius:50%; background:rgba(255,255,255,0.7); animation:twinkle 3s infinite; }
-  @keyframes twinkle { 0%,100%{opacity:.2;transform:scale(1)} 50%{opacity:.9;transform:scale(1.4)} }
-  .aurora-bg {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .aurora {
-    position: absolute;
-    width: 44vmax;
-    height: 44vmax;
-    border-radius: 50%;
-    filter: blur(55px);
-    opacity: 0.12;
-    animation: drift 18s ease-in-out infinite alternate;
-  }
-  .aurora.one { left: -8%; top: -12%; background: #356bdb; }
-  .aurora.two { right: -10%; top: 12%; background: #214fc0; animation-delay: -6s; }
-  .aurora.three { left: 28%; bottom: -24%; background: #2484c9; animation-delay: -10s; }
-  @keyframes drift {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(12px, -18px) scale(1.12); }
+  @media (max-width: 900px) {
+    .nav-links {
+      position: fixed; inset: 68px 0 auto 0; flex-direction: column; align-items: stretch; gap: 2px;
+      padding: 12px var(--gutter) 20px; background: var(--bg); border-bottom: 1px solid var(--line);
+      transform: translateY(-8px); opacity: 0; pointer-events: none;
+      transition: opacity .2s ease, transform .25s var(--ease);
+    }
+    .nav-links.open { opacity: 1; transform: none; pointer-events: auto; }
+    .nav-links a { padding: 12px 14px; font-size: 1rem; }
+    .menu-btn { display: inline-grid; }
+    .nav-cta { display: none; }
   }
 
-  @keyframes sparkle { 0%,100%{opacity:.3;transform:scale(0.8) rotate(0deg)} 50%{opacity:1;transform:scale(1.2) rotate(20deg)} }
-  .sparkle-anim { animation: sparkle 2.5s ease-in-out infinite; }
+  /* =========================================================
+     Hero
+     ========================================================= */
+  .hero { padding: clamp(40px, 7vw, 88px) 0 clamp(48px, 7vw, 80px); position: relative; }
+  .hero-grid { display: grid; grid-template-columns: 1.25fr .85fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
+  .status {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: .82rem; font-weight: 500; color: var(--ink-soft);
+    padding: 6px 14px 6px 10px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--line);
+    margin-bottom: 26px;
+  }
+  .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); position: relative; }
+  .pulse::after {
+    content: ''; position: absolute; inset: -4px; border-radius: 50%;
+    border: 2px solid var(--ok); opacity: 0; animation: pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse { 0% { transform: scale(.5); opacity: .7; } 100% { transform: scale(1.6); opacity: 0; } }
 
-  /* scrollbar */
-  .panel::-webkit-scrollbar { width: 3px; }
+  .hero h1 {
+    font-size: clamp(2.5rem, 6.2vw, 4.6rem);
+    font-weight: 400;
+    font-variation-settings: 'opsz' 144;
+    letter-spacing: -.03em;
+    line-height: 1.02;
+    margin-bottom: 24px;
+  }
+  .hero h1 .name-line { display: block; font-size: .42em; font-family: var(--font-body); font-weight: 600; letter-spacing: -.01em; color: var(--muted); margin-bottom: 14px; }
+  .hero-lede { font-size: clamp(1.05rem, 1.6vw, 1.2rem); color: var(--ink-soft); max-width: 36em; margin-bottom: 32px; }
+  .hero-lede strong { color: var(--ink); font-weight: 600; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); }
+  .fact { padding: 18px 16px 0 0; }
+  .fact + .fact { padding-left: 16px; border-left: 1px solid var(--line); }
+  .fact-num { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1; font-variation-settings: 'opsz' 96; }
+  .fact-num small { font-size: .5em; color: var(--muted); font-family: var(--font-body); margin-left: 2px; }
+  .fact-label { font-size: .78rem; color: var(--muted); margin-top: 8px; line-height: 1.4; }
+
+  .portrait { position: relative; justify-self: end; width: 100%; max-width: 400px; }
+  .portrait-frame {
+    border-radius: var(--radius-lg); overflow: hidden; aspect-ratio: 4 / 5;
+    box-shadow: var(--shadow-lg); background: var(--bg-alt);
+    position: relative;
+  }
+  .portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+  .portrait::before {
+    content: ''; position: absolute; inset: 18px -18px -18px 18px; border-radius: var(--radius-lg);
+    border: 1px solid var(--line-strong); z-index: -1;
+  }
+  .float-card {
+    position: absolute; background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; box-shadow: var(--shadow-lg); padding: 12px 14px;
+    font-size: .78rem; line-height: 1.35; color: var(--ink-soft);
+  }
+  .float-card b { display: block; font-family: var(--font-mono); font-size: .7rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .float-card.one { left: -36px; bottom: 56px; max-width: 210px; animation: bob 6s ease-in-out infinite; }
+  .float-card.two { right: -20px; top: 28px; animation: bob 6s ease-in-out -3s infinite; }
+  .float-card.two svg { display: block; margin-top: 4px; }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .portrait { justify-self: center; max-width: 340px; order: -1; }
+    .float-card.one { left: -12px; }
+    .float-card.two { right: -8px; }
+  }
+  @media (max-width: 600px) {
+    .facts { grid-template-columns: 1fr 1fr; }
+    .fact:nth-child(3) { padding-left: 0; border-left: 0; }
+    .fact:nth-child(n+3) { border-top: 1px solid var(--line); margin-top: 18px; }
+    .portrait { max-width: 280px; }
+    .float-card.one { left: -8px; bottom: 24px; }
+  }
+
+  /* =========================================================
+     Sections
+     ========================================================= */
+  section { padding: clamp(64px, 9vw, 112px) 0; }
+  .section-alt { background: var(--bg-alt); }
+  .section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 48px; align-items: end; margin-bottom: clamp(36px, 5vw, 56px); }
+  .section-head .eyebrow { margin-bottom: 14px; }
+  .section-head p { color: var(--muted); max-width: 34em; }
+  @media (max-width: 800px) { .section-head { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: clamp(20px, 3vw, 28px); box-shadow: var(--shadow);
+  }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(32px, 5vw, 64px); }
+  .about-copy p { font-size: 1.08rem; color: var(--ink-soft); margin-bottom: 18px; }
+  .about-copy p:first-child::first-letter {
+    font-family: var(--font-display); float: left; font-size: 3.6rem; line-height: .9;
+    padding: 6px 10px 0 0; color: var(--accent);
+  }
+  .interests h3 { font-family: var(--font-body); font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .interest-list li {
+    display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line);
+    font-size: .95rem; color: var(--ink-soft);
+  }
+  .interest-list li:first-child { border-top: 1px solid var(--line); }
+  .interest-list .n { font-family: var(--font-mono); font-size: .75rem; color: var(--accent); padding-top: 3px; }
+  .interest-list strong { display: block; color: var(--ink); font-weight: 600; }
+  .now-box { margin-top: 24px; padding: 18px 20px; border-radius: var(--radius); background: var(--accent-soft); color: var(--ink-soft); font-size: .92rem; }
+  .now-box b { font-family: var(--font-mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: 6px; }
+  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
+
+  /* Featured research */
+  .feature {
+    display: grid; grid-template-columns: 1.05fr 1fr; gap: 0; overflow: hidden; padding: 0;
+    margin-bottom: 24px;
+  }
+  .feature-body { padding: clamp(24px, 4vw, 44px); }
+  .feature-viz { padding: clamp(24px, 4vw, 44px); background: var(--bg-alt); border-left: 1px solid var(--line); display: flex; flex-direction: column; gap: 22px; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+  .tag {
+    font-family: var(--font-mono); font-size: .7rem; letter-spacing: .02em;
+    padding: 4px 10px; border-radius: 999px; background: var(--bg-alt); color: var(--ink-soft);
+    border: 1px solid var(--line);
+  }
+  .tag.hot { background: var(--warm-soft); color: var(--warm); border-color: transparent; }
+  .feature h3 { font-size: clamp(1.4rem, 2.4vw, 1.8rem); margin-bottom: 8px; }
+  .meta { font-size: .85rem; color: var(--muted); margin-bottom: 18px; }
+  .feature p { color: var(--ink-soft); margin-bottom: 16px; }
+  .rq-list { counter-reset: rq; margin: 0 0 22px; list-style: none; }
+  .rq-list li { counter-increment: rq; position: relative; padding-left: 40px; margin-bottom: 10px; font-size: .93rem; color: var(--ink-soft); }
+  .rq-list li::before {
+    content: 'RQ' counter(rq); position: absolute; left: 0; top: 2px;
+    font-family: var(--font-mono); font-size: .68rem; color: var(--accent); font-weight: 500;
+  }
+  .link-arrow {
+    display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: .92rem;
+    text-decoration: none; color: var(--accent);
+  }
+  .link-arrow svg { width: 16px; height: 16px; transition: transform .25s var(--ease); }
+  .link-arrow:hover svg { transform: translate(3px, -3px); }
+
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+  .stat-num { font-family: var(--font-display); font-size: 1.7rem; line-height: 1; font-variation-settings: 'opsz' 96; }
+  .stat-label { font-size: .74rem; color: var(--muted); margin-top: 8px; line-height: 1.35; }
+
+  .chart-title { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .bars { display: grid; gap: 9px; }
+  .bar { display: grid; grid-template-columns: 82px 1fr 46px; align-items: center; gap: 10px; font-size: .82rem; }
+  .bar-label { color: var(--ink-soft); }
+  .bar-track { height: 10px; border-radius: 6px; background: color-mix(in srgb, var(--line) 70%, transparent); overflow: hidden; }
+  .bar-fill { display: block; height: 100%; width: var(--w); border-radius: 6px; background: var(--accent); transform-origin: left; }
+  .bar:first-child .bar-fill { background: var(--warm); }
+  .bar-val { font-family: var(--font-mono); font-size: .75rem; color: var(--muted); text-align: right; }
+  .js .bars .bar-fill { transform: scaleX(0); transition: transform 1.1s var(--ease); }
+  .js .bars.in .bar-fill { transform: scaleX(1); }
+  .js .bars.in .bar:nth-child(2) .bar-fill { transition-delay: .08s; }
+  .js .bars.in .bar:nth-child(3) .bar-fill { transition-delay: .16s; }
+  .js .bars.in .bar:nth-child(4) .bar-fill { transition-delay: .24s; }
+  .js .bars.in .bar:nth-child(5) .bar-fill { transition-delay: .32s; }
+  .chart-note { font-size: .74rem; color: var(--muted); margin-top: 10px; }
+
+  @media (max-width: 860px) {
+    .feature { grid-template-columns: 1fr; }
+    .feature-viz { border-left: 0; border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 480px) { .stat-row { grid-template-columns: 1fr; } }
+
+  .research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .research-card { display: flex; flex-direction: column; transition: transform .3s var(--ease), box-shadow .3s; }
+  .research-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .research-card .icon {
+    width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+    background: var(--accent-soft); color: var(--accent); margin-bottom: 18px;
+  }
+  .research-card .icon svg { width: 22px; height: 22px; }
+  .research-card h3 { margin-bottom: 6px; }
+  .research-card p { color: var(--ink-soft); font-size: .95rem; margin-bottom: 18px; flex: 1; }
+  @media (max-width: 760px) { .research-grid { grid-template-columns: 1fr; } }
+
+  /* Experience */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+  .filter {
+    font: inherit; font-size: .86rem; font-weight: 500; cursor: pointer;
+    padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line-strong);
+    background: transparent; color: var(--muted); transition: all .2s;
+  }
+  .filter:hover { color: var(--ink); border-color: var(--ink); }
+  .filter[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .filter .count { font-family: var(--font-mono); font-size: .72rem; opacity: .65; margin-left: 4px; }
+
+  .timeline { position: relative; }
+  .role {
+    display: grid; grid-template-columns: 190px 1fr; gap: 28px;
+    padding: 26px 0; border-top: 1px solid var(--line);
+    transition: opacity .3s;
+  }
+  .role:last-child { border-bottom: 1px solid var(--line); }
+  .role[hidden] { display: none; }
+  .role-when { font-family: var(--font-mono); font-size: .78rem; color: var(--muted); padding-top: 4px; }
+  .role-kind {
+    display: inline-block; margin-top: 10px; font-family: var(--font-body); font-size: .7rem; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent);
+  }
+  .role-kind.teach { background: var(--warm-soft); color: var(--warm); }
+  .role-kind.lead { background: color-mix(in srgb, var(--ok) 14%, transparent); color: var(--ok); }
+  .role h3 { font-size: 1.22rem; margin-bottom: 2px; }
+  .role .org { font-size: .92rem; color: var(--muted); margin-bottom: 12px; }
+  .role ul li { position: relative; padding-left: 18px; margin-bottom: 6px; color: var(--ink-soft); font-size: .95rem; }
+  .role ul li::before { content: ''; position: absolute; left: 0; top: .7em; width: 7px; height: 1px; background: var(--accent); }
+  .role .link-arrow { margin-top: 8px; font-size: .86rem; }
+  @media (max-width: 680px) { .role { grid-template-columns: 1fr; gap: 8px; } }
+
+  /* Education */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .edu-card { position: relative; overflow: hidden; }
+  .edu-card .when { font-family: var(--font-mono); font-size: .76rem; color: var(--muted); margin-bottom: 18px; display: flex; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .edu-card .badge-now { color: var(--ok); }
+  .edu-card h3 { font-size: 1.45rem; margin-bottom: 6px; }
+  .edu-card .degree { color: var(--ink-soft); margin-bottom: 18px; }
+  .honors { display: flex; flex-wrap: wrap; gap: 8px; }
+  .edu-card .seal {
+    position: absolute; right: -24px; bottom: -24px; width: 120px; height: 120px; border-radius: 50%;
+    border: 1px solid var(--line); opacity: .7;
+  }
+  .edu-card .seal::after { content: ''; position: absolute; inset: 14px; border-radius: 50%; border: 1px dashed var(--line-strong); }
+  @media (max-width: 760px) { .edu-grid { grid-template-columns: 1fr; } }
+
+  /* Skills */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .skill-group h3 { font-size: 1.1rem; margin-bottom: 4px; }
+  .skill-group .sub { font-size: .86rem; color: var(--muted); margin-bottom: 16px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    font-size: .84rem; padding: 6px 12px; border-radius: 8px;
+    background: var(--bg-alt); border: 1px solid var(--line); color: var(--ink-soft);
+    transition: border-color .2s, color .2s;
+  }
+  .pill:hover { border-color: var(--accent); color: var(--ink); }
+  .langs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+  .lang { padding: 16px 18px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); }
+  .lang b { font-family: var(--font-display); font-weight: 500; font-size: 1.2rem; display: block; }
+  .lang span { font-size: .8rem; color: var(--muted); }
+  @media (max-width: 860px) { .skills-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 480px) { .langs { grid-template-columns: 1fr; } }
+
+  /* Credentials */
+  .cred-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .cred {
+    display: flex; flex-direction: column; gap: 6px; text-decoration: none;
+    padding: 20px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line);
+    transition: transform .25s var(--ease), border-color .2s, box-shadow .25s;
+  }
+  .cred:hover { transform: translateY(-3px); border-color: var(--line-strong); box-shadow: var(--shadow); }
+  .cred .issuer { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+  .cred .title { font-weight: 600; line-height: 1.35; color: var(--ink); }
+  .cred .foot { margin-top: auto; padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: .8rem; color: var(--muted); }
+  .cred .foot svg { width: 15px; height: 15px; transition: transform .25s var(--ease); }
+  .cred:hover .foot svg { transform: translate(2px, -2px); color: var(--accent); }
+  @media (max-width: 900px) { .cred-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .cred-grid { grid-template-columns: 1fr; } }
+
+  /* Leadership & honors */
+  .lead-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .lead-list li { padding: 16px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: baseline; }
+  .lead-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+  .lead-list li:first-child { padding-top: 0; }
+  .lead-list .what { font-weight: 600; color: var(--ink); }
+  .lead-list .yr { font-family: var(--font-mono); font-size: .76rem; color: var(--muted); white-space: nowrap; }
+  .lead-list .desc { grid-column: 1 / -1; font-size: .9rem; color: var(--ink-soft); }
+  .lead-list a.proof { font-size: .8rem; color: var(--accent); text-decoration: none; font-weight: 600; white-space: nowrap; }
+  .lead-list a.proof:hover { text-decoration: underline; }
+  .card h3.card-h { font-size: 1.25rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .card h3.card-h svg { width: 20px; height: 20px; color: var(--accent); }
+  @media (max-width: 860px) { .lead-grid { grid-template-columns: 1fr; } }
+
+  /* Contact */
+  .contact { text-align: center; }
+  .contact h2 { font-size: clamp(2.2rem, 5.4vw, 3.8rem); font-weight: 400; letter-spacing: -.03em; margin: 16px auto 18px; max-width: 14em; }
+  .contact p.lede { color: var(--muted); max-width: 34em; margin: 0 auto 32px; font-size: 1.05rem; }
+  .contact .hero-ctas { justify-content: center; margin-bottom: 40px; }
+  .contact-list { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 28px; font-size: .92rem; color: var(--muted); }
+  .contact-list a, .contact-list span { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+  .contact-list a:hover { color: var(--ink); }
+  .contact-list svg { width: 16px; height: 16px; }
+
+  footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: .84rem; color: var(--muted); }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  footer a { color: var(--ink-soft); }
+
+  /* =========================================================
+     Sky: "Falak" means sky in Urdu
+     ========================================================= */
+  .hero { overflow: hidden; }
+  .hero > .wrap { position: relative; z-index: 1; }
+  .sky { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+  .sky svg { width: 100%; height: 100%; display: block; color: var(--accent); }
+  .sky .st { fill: var(--accent); animation: twinkle 4s ease-in-out infinite; }
+  .sky .cl { stroke: var(--accent); stroke-width: 1; stroke-opacity: .35; fill: none; stroke-dasharray: 1; stroke-dashoffset: 1; animation: drawline 2.4s var(--ease) forwards; }
+  .sky .shoot { opacity: 0; }
+  :root[data-theme="dark"] .sky .st { fill: #fff; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sky .st { fill: #fff; } }
+  @keyframes twinkle { 0%, 100% { opacity: .12; } 50% { opacity: .7; } }
+  @keyframes drawline { to { stroke-dashoffset: 0; } }
+  @keyframes shoot { 0% { opacity: 0; transform: translate(0, 0); } 3% { opacity: .9; } 12% { opacity: 0; transform: translate(340px, 120px); } 100% { opacity: 0; transform: translate(340px, 120px); } }
+
+  .sky-name { display: flex; align-items: baseline; gap: 10px; margin: -4px 0 10px; font-family: var(--font-mono); font-size: .8rem; color: var(--muted); }
+  .sky-name .urdu { font-family: 'Noto Naskh Arabic', 'Segoe UI', serif; font-size: 1.55rem; color: var(--warm); line-height: 1; }
+
+  .js .hero h1 .w { display: inline-block; opacity: 0; transform: translateY(.45em); animation: wordin .9s var(--ease) forwards; }
+  @keyframes wordin { to { opacity: 1; transform: none; } }
+
+  .typing { font-family: var(--font-mono); font-size: .9rem; color: var(--accent); min-height: 1.6em; margin: 0 0 22px; }
+  .typing .caret { display: inline-block; width: .55em; height: 1.1em; background: var(--warm); vertical-align: -.18em; margin-left: 2px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* Expandable detail panels */
+  .more { margin: 4px 0 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-alt); }
+  .more summary {
+    cursor: pointer; list-style: none; padding: 12px 16px; font-weight: 600; font-size: .9rem; color: var(--ink);
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  }
+  .more summary::-webkit-details-marker { display: none; }
+  .more summary::after { content: '+'; font-family: var(--font-mono); font-size: 1.1rem; color: var(--accent); transition: transform .3s var(--ease); }
+  .more[open] summary::after { transform: rotate(45deg); }
+  .more-body { padding: 0 16px 16px; }
+  .more-body h4 { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin: 14px 0 8px; }
+  .more-body h4:first-child { margin-top: 2px; }
+  ul.dash li { position: relative; padding-left: 18px; margin-bottom: 7px; font-size: .9rem; color: var(--ink-soft); }
+  ul.dash li::before { content: ''; position: absolute; left: 0; top: .72em; width: 8px; height: 1px; background: var(--accent); }
+
+  /* Impact strip */
+  .impact { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 36px; }
+  .impact div { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 14px; }
+  .impact b { display: block; font-family: var(--font-display); font-weight: 500; font-size: 1.9rem; line-height: 1; font-variation-settings: 'opsz' 96; }
+  .impact > div > span { display: block; font-size: .76rem; color: var(--muted); margin-top: 8px; line-height: 1.35; }
+  @media (max-width: 900px) { .impact { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 480px) { .impact { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Journey */
+  .journey { list-style: none; position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 0; margin-top: 28px; }
+  .stop { position: relative; padding: 34px 28px 0 0; }
+  .stop::after { content: ''; position: absolute; left: 0; right: 0; top: 11px; height: 2px; background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 25%, var(--line))); }
+  .stop:nth-child(n+4)::after { background: linear-gradient(90deg, var(--accent), var(--warm)); }
+  .stop::before { content: ''; position: absolute; z-index: 1; top: 4px; left: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--bg-alt); border: 2px solid var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent); }
+  .stop:last-child::before { border-color: var(--warm); background: var(--warm); }
+  .stop .yr { font-family: var(--font-mono); font-size: .75rem; color: var(--accent); }
+  .stop h3 { font-size: 1.05rem; margin: 6px 0 6px; }
+  .stop p { font-size: .86rem; color: var(--ink-soft); }
+  @media (max-width: 860px) {
+    .journey { grid-template-columns: 1fr; gap: 0; padding-left: 28px; }
+    .journey::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--line), var(--accent), var(--warm)); }
+    .stop { padding: 0 0 26px; }
+    .stop::after { display: none; }
+    .stop::before { left: -28px; top: 2px; }
+  }
+
+  /* Graduate work */
+  .code-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .code-card { display: flex; flex-direction: column; min-width: 0; }
+  .code-card .q { font-family: var(--font-display); font-size: 1.15rem; line-height: 1.3; margin: 10px 0 10px; }
+  .code-card p { font-size: .9rem; color: var(--ink-soft); flex: 1; margin-bottom: 16px; }
+  .code-card .links { display: flex; gap: 16px; flex-wrap: wrap; }
+  .code-card pre { font-family: var(--font-mono); font-size: .72rem; line-height: 1.6; background: var(--bg-alt); border: 1px solid var(--line); border-radius: 10px; padding: 12px; overflow-x: auto; color: var(--ink-soft); margin-bottom: 14px; }
+  .code-card pre .k { color: var(--warm); } .code-card pre .s { color: var(--ok); } .code-card pre .c { color: var(--muted); }
+  @media (max-width: 900px) { .code-grid { grid-template-columns: 1fr; } }
+
+  /* Theme-matched animated illustrations */
+  .tv .tv-dark { display: none; }
+  :root[data-theme="dark"] .tv .tv-light { display: none; }
+  :root[data-theme="dark"] .tv .tv-dark { display: block; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .tv .tv-light { display: none; }
+    :root:not([data-theme="light"]) .tv .tv-dark { display: block; }
+  }
+  .tv img { width: 100%; height: auto; }
+  .card-visual { margin: -6px -6px 20px; border-radius: 12px; overflow: hidden; }
+  .pipeline-wrap { margin-top: 8px; }
+
+  /* Scroll progress */
+  .progress { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60; background: linear-gradient(90deg, var(--accent), var(--warm)); transform-origin: 0 50%; transform: scaleX(0); }
+
+  /* =========================================================
+     Stroop experiment
+     ========================================================= */
+  .lab { display: grid; grid-template-columns: 1.15fr .85fr; gap: 0; padding: 0; overflow: hidden; }
+  .lab-stage { padding: clamp(24px, 4vw, 44px); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 380px; text-align: center; position: relative; }
+  .lab-side { padding: clamp(24px, 4vw, 44px); background: var(--bg-alt); border-left: 1px solid var(--line); }
+  .lab-side h3 { margin-bottom: 10px; }
+  .lab-side p { color: var(--ink-soft); font-size: .95rem; margin-bottom: 14px; }
+  .lab-side .fine { font-size: .8rem; color: var(--muted); }
+  .stim { font-family: var(--font-body); font-weight: 700; font-size: clamp(3rem, 9vw, 5.2rem); letter-spacing: -.02em; line-height: 1; min-height: 1.2em; user-select: none; }
+  .stim.fix { color: var(--muted); font-weight: 400; }
+  .trial-meta { font-family: var(--font-mono); font-size: .75rem; color: var(--muted); margin-bottom: 18px; letter-spacing: .06em; }
+  .choices { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-top: 30px; width: 100%; max-width: 460px; }
+  .choice {
+    font: inherit; font-weight: 600; font-size: .9rem; padding: 12px 8px; border-radius: 12px; cursor: pointer;
+    border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink);
+    display: flex; flex-direction: column; align-items: center; gap: 6px; transition: transform .15s var(--ease), border-color .2s;
+  }
+  .choice:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .choice:active { transform: scale(.96); }
+  .choice .sw { width: 22px; height: 22px; border-radius: 50%; }
+  .choice kbd { font-family: var(--font-mono); font-size: .68rem; color: var(--muted); }
+  .choice.flash-ok { border-color: var(--ok); }
+  .choice.flash-bad { border-color: #e5484d; }
+  .lab-run { width: 100%; display: flex; flex-direction: column; align-items: center; }
+  .lab-stage [hidden] { display: none !important; }
+  .lab-results { width: 100%; max-width: 460px; text-align: left; }
+  .lab-results .big { font-family: var(--font-display); font-size: clamp(2.4rem, 6vw, 3.4rem); line-height: 1; margin: 6px 0 4px; }
+  .rt-bars { display: grid; gap: 10px; margin: 22px 0; }
+  .rt-row { display: grid; grid-template-columns: 110px 1fr 70px; gap: 10px; align-items: center; font-size: .86rem; }
+  .rt-row .track { height: 14px; border-radius: 7px; background: color-mix(in srgb, var(--line) 70%, transparent); overflow: hidden; }
+  .rt-row .fill { display: block; height: 100%; border-radius: 7px; background: var(--accent); width: 0; transition: width 1s var(--ease); }
+  .rt-row.incon .fill { background: var(--warm); }
+  .rt-row .v { font-family: var(--font-mono); font-size: .78rem; color: var(--muted); text-align: right; }
+  @media (max-width: 860px) {
+    .lab { grid-template-columns: 1fr; }
+    .lab-side { border-left: 0; border-top: 1px solid var(--line); }
+  }
+  @media (max-width: 420px) { .choices { grid-template-columns: repeat(2, 1fr); } }
+
+  .closing-wave { margin-top: 56px; border-radius: 22px; overflow: hidden; }
+
+  /* =========================================================
+     Reveal on scroll (only when JS runs)
+     ========================================================= */
+  .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+    .js .reveal { opacity: 1; transform: none; }
+    .js .bars .bar-fill { transform: none; }
+    .js .hero h1 .w { opacity: 1; transform: none; }
+    .sky .cl { stroke-dashoffset: 0; }
+  }
+
+  /* =========================================================
+     Print — turns the page into a clean CV
+     ========================================================= */
+  @media print {
+    :root { --bg: #fff; --bg-alt: #fff; --surface: #fff; --ink: #000; --ink-soft: #222; --muted: #555; --line: #ccc; --accent: #1f4b8a; --shadow: none; --shadow-lg: none; }
+    .nav, .hero-ctas, .filters, .portrait, .float-card, .feature-viz, .contact .hero-ctas, .skip-link, .no-print,
+    .sky, .typing, .progress, .tv, #lab, #method, .closing-wave { display: none !important; }
+    .js .hero h1 .w { opacity: 1 !important; transform: none !important; }
+    section { padding: 18px 0; break-inside: avoid-page; }
+    .hero { padding: 0 0 12px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 28pt; }
+    .card, .cred, .lang, .stat { box-shadow: none; }
+    .role[hidden] { display: grid !important; }
+    .js .reveal { opacity: 1 !important; transform: none !important; }
+    a[href^="http"]::after { content: ' (' attr(href) ')'; font-size: 8pt; color: #555; }
+    .feature { grid-template-columns: 1fr; }
+    body { font-size: 10.5pt; }
+  }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
-<div class="stars-bg" id="stars"></div>
-<div class="aurora-bg" aria-hidden="true">
-  <div class="aurora one"></div>
-  <div class="aurora two"></div>
-  <div class="aurora three"></div>
-</div>
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1Z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2Z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></symbol>
+    <symbol id="i-wave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2l2-6 3 12 3-9 2 6 2-3h6"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></symbol>
+    <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 12.9 17 22l-5-3-5 3 1.5-9.1"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></symbol>
+  </defs>
+</svg>
 
-<!-- TOP HEADER -->
-<div class="top-bar">
-  <div class="header-info">
-    <h1>Fnu Falak</h1>
-    <div class="sub">Preferred Name: Falak</div>
-    <div class="header-badges">
-      <span class="hbadge">🎓 University of Wisconsin–Madison</span>
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="Falak — back to top">
+      <span class="brand-mark" aria-hidden="true">F</span>
+      <span>Falak</span>
+    </a>
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#lab">Try it</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="sun"><use href="#i-sun"/></svg>
+        <svg class="moon"><use href="#i-moon"/></svg>
+      </button>
+      <a class="btn btn-primary nav-cta" href="mailto:falak@wisc.edu">Get in touch</a>
+      <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+        <svg><use href="#i-menu"/></svg>
+      </button>
     </div>
   </div>
-  <div class="avatar-panel" aria-label="Portrait photo">
-    <div class="avatar-photo">
-      <img src="IMG_1692.jpg" alt="Portrait photo">
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top" aria-label="Introduction">
+  <div class="sky" aria-hidden="true"><svg id="sky" preserveAspectRatio="none"></svg></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="status reveal"><span class="pulse" aria-hidden="true"></span>Open to research assistant &amp; data roles</div>
+      <h1 id="hero-title">
+        <span class="name-line">Falak — Psychology &amp; Behavioral Data Science</span>
+        <span class="words">I study how people think and connect, and I turn that into <em class="accent">evidence</em>.</span>
+      </h1>
+      <div class="sky-name reveal"><span class="urdu" lang="ur" dir="rtl">فلک</span><span>my name, Urdu for “sky”</span></div>
+      <p class="typing no-print" aria-hidden="true"><span class="typed" id="typed"></span><span class="caret"></span></p>
+      <p class="hero-lede reveal">
+        M.S. student in <strong>Psychology: Data Science in Human Behavior</strong> at the University of Wisconsin–Madison.
+        Michigan State psychology graduate with Highest Honors and hands-on research across a
+        <strong>NASA-funded</strong> team-science study, an <strong>Army Research Institute</strong> project,
+        perception experiments, and survey research.
+      </p>
+      <div class="hero-ctas reveal">
+        <a class="btn btn-primary" href="mailto:falak@wisc.edu"><svg><use href="#i-mail"/></svg>Email me</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/fnufalak" target="_blank" rel="noopener noreferrer"><svg><use href="#i-linkedin"/></svg>LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/falak1720" target="_blank" rel="noopener noreferrer"><svg><use href="#i-github"/></svg>GitHub</a>
+        <button class="btn btn-ghost no-print" type="button" id="print-cv"><svg><use href="#i-print"/></svg>Save as PDF</button>
+      </div>
+      <div class="facts reveal" role="list">
+        <div class="fact" role="listitem"><div class="fact-num"><span data-count="3.9" data-dec="1">3.9</span><small>/4.0</small></div><div class="fact-label">GPA · Highest Honors, Dean’s List every semester</div></div>
+        <div class="fact" role="listitem"><div class="fact-num"><span data-count="211">211</span></div><div class="fact-label">Survey participants in my lead research project</div></div>
+        <div class="fact" role="listitem"><div class="fact-num"><span data-count="5">5</span></div><div class="fact-label">Research roles, from lab to NASA analog</div></div>
+        <div class="fact" role="listitem"><div class="fact-num"><span data-count="3">3</span></div><div class="fact-label">Languages: Hindi, Urdu, English</div></div>
+      </div>
+    </div>
+
+    <figure class="portrait reveal">
+      <div class="portrait-frame">
+        <picture>
+          <source srcset="assets/falak.webp" type="image/webp">
+          <img src="assets/falak.jpg" alt="Portrait of Falak" width="900" height="900" fetchpriority="high">
+        </picture>
+      </div>
+      <div class="float-card one" aria-hidden="true">
+        <b>Now</b>
+        M.S. at UW–Madison, building reproducible stats reports in Quarto
+      </div>
+      <div class="float-card two" aria-hidden="true">
+        <b>ρ ≈ 0</b>
+        <svg width="96" height="40" viewBox="0 0 96 40">
+          <g fill="currentColor" opacity=".55">
+            <circle cx="8" cy="22" r="2"/><circle cx="16" cy="10" r="2"/><circle cx="22" cy="30" r="2"/><circle cx="30" cy="18" r="2"/>
+            <circle cx="38" cy="8" r="2"/><circle cx="44" cy="26" r="2"/><circle cx="52" cy="14" r="2"/><circle cx="58" cy="32" r="2"/>
+            <circle cx="66" cy="20" r="2"/><circle cx="74" cy="10" r="2"/><circle cx="80" cy="28" r="2"/><circle cx="88" cy="16" r="2"/>
+          </g>
+          <line x1="4" y1="21" x2="92" y2="19" stroke="#b8653a" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="section-alt" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">About</span>
+        <h2>Curious about people, <em class="accent">rigorous</em> with data.</h2>
+      </div>
+      <p>From mission control for a Mars analog to one-on-one tutoring, my work sits where behavioral science meets real human experience.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>I’m a psychology researcher training in behavioral data science. I earned my B.S. in Psychology from Michigan State University with Highest Honors, a 3.9 GPA, and minors in Human Behavior &amp; Social Services and Business. I’m now pursuing an M.S. in Psychology: Data Science in Human Behavior at UW–Madison.</p>
+        <p>My research experience spans the full arc of a study. I’ve recruited participants and run sessions for a perception experiment, coded more than 50 audio recordings for an Army Research Institute project, reviewed 35+ peer-reviewed articles for a literature review, and supported crew communications for a NASA-funded study of multiteam systems.</p>
+        <p>Alongside the research, I’ve spent years in people-facing roles: Resident Assistant for 40+ students, teaching assistant for a data analysis course, English tutor, and wellness mentor. They keep me grounded in the human side of the data. I’m looking for research and data roles where both sides matter.</p>
+      </div>
+
+      <aside class="interests reveal" aria-label="Research interests">
+        <h3>Research interests</h3>
+        <ul class="interest-list">
+          <li><span class="n">01</span><div><strong>Digital behavior &amp; social life</strong>How social media use relates to confidence, social skills, and wellbeing.</div></li>
+          <li><span class="n">02</span><div><strong>Teams in extreme environments</strong>Coordination and communication in multiteam systems, from spaceflight analogs onward.</div></li>
+          <li><span class="n">03</span><div><strong>Perception &amp; attention</strong>Timing and auditory perception: when do two sounds become two?</div></li>
+          <li><span class="n">04</span><div><strong>Mental health &amp; wellbeing</strong>Stress, anxiety, and the supports that help students thrive.</div></li>
+        </ul>
+        <div class="now-box">
+          <b>Currently</b>
+          Writing short, reproducible statistical reports in Python, R &amp; Quarto, covering chi-square, correlation, and more, as part of my graduate training.
+        </div>
+      </aside>
+    </div>
+
+    <h3 class="reveal" style="margin-top:64px;font-size:1.5rem">The path so far</h3>
+    <ol class="journey" aria-label="Milestones">
+      <li class="stop reveal">
+        <span class="yr">2018 – 19</span>
+        <h3>Finding my voice</h3>
+        <p>Bal Bharati Public School, Navi Mumbai: 3rd place in English debate, a merit certificate in Hindi debate, MUN delegate (UNHRC, UNDP), 1st in an essay competition, and 3rd in shot put.</p>
+      </li>
+      <li class="stop reveal">
+        <span class="yr">2020 – 21</span>
+        <h3>The psychology spark</h3>
+        <p>Presented on emerging branches of psychology at DPS Navi Mumbai. Volunteered with the Inner Wheel Club (storytelling at St. Jude’s, Tata Memorial) and sang in the national Rashtragaan record.</p>
+      </li>
+      <li class="stop reveal">
+        <span class="yr">2022</span>
+        <h3>Academic excellence</h3>
+        <p>Award of Academic Excellence at Delhi Public School, then on to Michigan State University for psychology.</p>
+      </li>
+      <li class="stop reveal">
+        <span class="yr">2024 – 25</span>
+        <h3>Into the lab</h3>
+        <p>Mission control for NASA’s HERA Mars analog, an Army Research Institute project, TA for data analysis, Resident Assistant, and CITI-certified in research ethics.</p>
+      </li>
+      <li class="stop reveal">
+        <span class="yr">2025 – 26</span>
+        <h3>Leading research</h3>
+        <p>Ran a 211-person survey study, joined the TAP perception lab, and graduated from MSU with Highest Honors (3.9 GPA).</p>
+      </li>
+      <li class="stop reveal">
+        <span class="yr">Now</span>
+        <h3>UW–Madison</h3>
+        <p>M.S. in Psychology: Data Science in Human Behavior, building reproducible analyses in Python, R &amp; Quarto.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= RESEARCH ================= -->
+<section id="research">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Selected research</span>
+        <h2>Questions I’ve <em class="accent">tested</em>.</h2>
+      </div>
+      <p>A closer look at the projects where I designed, collected, analyzed, or supported the science.</p>
+    </div>
+
+    <!-- Featured: Social media study -->
+    <article class="card feature reveal">
+      <div class="feature-body">
+        <div class="tag-row">
+          <span class="tag hot">Featured study</span>
+          <span class="tag">Survey design</span>
+          <span class="tag">SPSS</span>
+          <span class="tag">Qualtrics</span>
+        </div>
+        <h3>Social media &amp; college students’ real-life confidence</h3>
+        <div class="meta">PSY 493: Survey Research Methods · Michigan State University · Aug–Dec 2025 · with A. Keifer &amp; H. Seymour</div>
+        <p>A cross-sectional survey of MSU students recruited through SONA and run in Qualtrics. We built a multi-construct instrument from validated scales (Social Media Attitude Scale, Bergen Social Media Addiction Scale, Social Skills Inventory, Social Self-Efficacy Scale) plus new items, then analyzed it end-to-end in SPSS.</p>
+        <ol class="rq-list">
+          <li>What are students’ attitudes toward social media?</li>
+          <li>When did they start, and how has use changed into college?</li>
+          <li>Do some groups start earlier or use it more? (ANOVA, Welch’s <i>t</i>)</li>
+          <li>Is usage related to social skills and face-to-face confidence? (Spearman’s ρ)</li>
+        </ol>
+        <details class="more">
+          <summary>My role &amp; the full findings</summary>
+          <div class="more-body">
+            <h4>My role</h4>
+            <ul class="dash">
+              <li>Co-designed the research questions and the survey instrument, combining four validated scales with new items on start age and usage.</li>
+              <li>Built the survey in Qualtrics and recruited participants through SONA (target 150; <b>211 completed</b>).</li>
+              <li>Ran the end-to-end analysis in SPSS: descriptives, assumption checks (Shapiro–Wilk, Levene’s), one-way ANOVA, Welch’s <i>t</i>-tests, and Spearman correlations.</li>
+              <li>Co-wrote the 40-page report and presented the findings.</li>
+            </ul>
+            <h4>What we found</h4>
+            <ul class="dash">
+              <li><b>Confidence (RQ1):</b> 38.9% felt equally confident online and offline; 33.5% felt slightly more confident on social media. 60.1% said they have more of a presence in real life than online.</li>
+              <li><b>Start age (RQ2):</b> students started at about <b>12.4 years</b> on average (range 7–19) and got their first phone at about 12.2. They rated <b>14.3</b> as the right age to start, and 46.8% wished they had started at a different age, almost all of them later.</li>
+              <li><b>Usage (RQ2):</b> about <b>4.1 hours a day</b> in college and 6.4 days a week in high school. 83.8% scroll “often” or “almost always” in their free time, though problematic-use scores stayed low on average (BSMAS M = 2.48 of 5).</li>
+              <li><b>Group differences (RQ3):</b> no significant differences in daily use by gender or race/ethnicity, or in start age by family financial situation.</li>
+              <li><b>Social functioning (RQ4):</b> social skills tracked strongly with extraversion (ρ = .63) and real-life confidence (ρ = .59), but social media use showed <b>no meaningful correlation</b> with either.</li>
+            </ul>
+            <h4>Recommendations we made</h4>
+            <ul class="dash">
+              <li>Digital-wellness workshops that help students reflect on early adoption and build healthier habits.</li>
+              <li>First-year programs that build real-life social confidence directly, since social media neither helps nor harms it on its own.</li>
+              <li>Future research comparing passive scrolling with active posting, and following early adopters longitudinally.</li>
+            </ul>
+          </div>
+        </details>
+        <a class="link-arrow" href="docs/social-media-survey-report.pdf" target="_blank" rel="noopener noreferrer">Read the full 40-page report <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="feature-viz">
+        <div class="stat-row">
+          <div class="stat"><div class="stat-num">211</div><div class="stat-label">students completed the survey</div></div>
+          <div class="stat"><div class="stat-num">4.1h</div><div class="stat-label">average daily social media use</div></div>
+          <div class="stat"><div class="stat-num">93%</div><div class="stat-label">of students who wanted a different start age wished they’d started <i>later</i></div></div>
+        </div>
+        <div>
+          <div class="chart-title">Most-used platforms in college</div>
+          <div class="bars" id="platform-bars" role="img" aria-label="Instagram 93.3%, TikTok 84.6%, Snapchat 83.2%, YouTube 72.2%, Facebook 34.1%">
+            <div class="bar"><span class="bar-label">Instagram</span><span class="bar-track"><span class="bar-fill" style="--w:93.3%"></span></span><span class="bar-val">93.3%</span></div>
+            <div class="bar"><span class="bar-label">TikTok</span><span class="bar-track"><span class="bar-fill" style="--w:84.6%"></span></span><span class="bar-val">84.6%</span></div>
+            <div class="bar"><span class="bar-label">Snapchat</span><span class="bar-track"><span class="bar-fill" style="--w:83.2%"></span></span><span class="bar-val">83.2%</span></div>
+            <div class="bar"><span class="bar-label">YouTube</span><span class="bar-track"><span class="bar-fill" style="--w:72.2%"></span></span><span class="bar-val">72.2%</span></div>
+            <div class="bar"><span class="bar-label">Facebook</span><span class="bar-track"><span class="bar-fill" style="--w:34.1%"></span></span><span class="bar-val">34.1%</span></div>
+          </div>
+        </div>
+        <div class="stat" style="background:var(--surface)">
+          <div class="chart-title" style="margin-bottom:6px">Key finding</div>
+          <div style="font-size:.92rem;color:var(--ink-soft)">Daily social media use showed <b>no meaningful correlation</b> with social skills, self-efficacy, or real-life confidence (all ρ between −.07 and .10, n.s.). Heavy use didn’t predict weaker offline social functioning.</div>
+        </div>
+      </div>
+    </article>
+
+    <div class="research-grid">
+      <article class="card research-card reveal">
+        <div class="card-visual tv">
+          <img class="tv-light" src="assets/anim/card-nasa-light.svg" alt="Animated Mars with an orbiting habitat and a mission-control panel" width="420" height="270" loading="lazy">
+          <img class="tv-dark" src="assets/anim/card-nasa-dark.svg" alt="" width="420" height="270" loading="lazy">
+        </div>
+        <div class="tag-row"><span class="tag">NASA #80NSSC23K1124</span><span class="tag">Team science</span></div>
+        <h3>Project FUSION: NASA HERA Mars analog</h3>
+        <div class="meta">Mission Control Specialist · MSU × NASA · May–Aug 2024</div>
+        <p>Served as mission-control liaison during a Human Exploration Research Analog (HERA) Mars-simulation campaign within FUSION, a NASA-funded study of interdependent multiteam systems led by Dr. Dorothy Carter. Managed crew communications and cross-department budget authorization during data collection.</p>
+        <a class="link-arrow" href="docs/nasa-fusion-certificate.pdf" target="_blank" rel="noopener noreferrer">View participation certificate <svg><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card research-card reveal">
+        <div class="card-visual tv">
+          <img class="tv-light" src="assets/anim/card-tones-light.svg" alt="Two animated tone bursts sliding together until they sound like one tone" width="420" height="270" loading="lazy">
+          <img class="tv-dark" src="assets/anim/card-tones-dark.svg" alt="" width="420" height="270" loading="lazy">
+        </div>
+        <div class="tag-row"><span class="tag">Psychoacoustics</span><span class="tag">Experimental</span></div>
+        <h3>When do two tones become two?</h3>
+        <div class="meta">Research Assistant · TAP Lab (Timing, Attention &amp; Perception), MSU · Nov 2025–Jan 2026</div>
+        <p>Recruited participants and collected data for a sound-perception study measuring the minimum time interval at which listeners perceive two tones as distinct, then presented findings to lab members and academic audiences.</p>
+      </article>
     </div>
   </div>
-</div>
+</section>
 
-<!-- MAIN CONTENT -->
-<div class="main-content">
-  <div class="resume-grid">
-
-    <!-- ABOUT + LANGUAGES (left col) -->
-    <div>
-      <div class="section-label">About</div>
-      <div class="card" style="margin-bottom:12px;">
-        <div class="card-body" style="font-size:.85rem; line-height:1.85; color:#d0e4f7;">
-          Psychology graduate with Highest Honors from Michigan State University and an incoming M.S. student in Psychology: Data Science in Human Behavior at the University of Wisconsin–Madison. Experience includes behavioral research, data analysis, participant recruitment, and community engagement, including work on NASA's HERA project and a U.S. Army Research Institute project. Seeking research and related job opportunities where I can apply my research and data skills.
-        </div>
+<!-- ================= METHOD ================= -->
+<section id="method" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">How I work</span>
+        <h2>From a question to <em class="accent">reproducible</em> answers.</h2>
       </div>
-
-      <div class="section-label">Education</div>
-      <div class="edu-card" style="margin-bottom:12px;">
-        <div class="edu-logo">🎓</div>
-        <div class="edu-info">
-          <h3>University of Wisconsin–Madison</h3>
-          <p>M.S. in Psychology: Data Science in Human Behavior</p>
-          <p>Fall 2026–Spring 2027</p>
-        </div>
-      </div>
-      <div class="edu-card" style="margin-bottom:12px;">
-        <div class="edu-logo">🏛️</div>
-        <div class="edu-info">
-          <h3>Michigan State University</h3>
-          <p>B.S. in Psychology · Minors in Human Behavior & Social Services and Business</p>
-          <p>May 2026 · GPA 3.9 / 4.0 · Highest Honors · Dean's List every semester</p>
-        </div>
-      </div>
+      <p>Every project follows the same loop: ask a clear question, measure it with validated tools, collect carefully, analyze transparently, and report so others can check the work.</p>
     </div>
-
-    <!-- CONTACT + SKILLS (right col) -->
-    <div>
-      <div class="section-label">Contact</div>
-      <div class="contact-grid" style="grid-template-columns:1fr; margin-bottom:12px;">
-        <div class="contact-card">
-          <div class="contact-icon">📧</div>
-          <div class="contact-text">
-            <div class="label">Email</div>
-            <div class="val"><a href="mailto:falak@wisc.edu">falak@wisc.edu</a></div>
-          </div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">📱</div>
-          <div class="contact-text">
-            <div class="label">Phone</div>
-            <div class="val">(517) 302-7784</div>
-          </div>
-        </div>
-        <div class="contact-card">
-          <div class="contact-icon">💼</div>
-          <div class="contact-text">
-            <div class="label">LinkedIn</div>
-            <div class="val" style="font-size:.75rem;"><a href="https://www.linkedin.com/in/fnufalak" target="_blank" rel="noopener noreferrer">linkedin.com/in/fnufalak</a></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-label">Skills</div>
-      <div class="skills-grid" style="margin-bottom:10px;">
-        <div class="skill-pill">SPSS</div>
-        <div class="skill-pill">Python</div>
-        <div class="skill-pill">R</div>
-        <div class="skill-pill">Excel</div>
-        <div class="skill-pill">Audacity</div>
-        <div class="skill-pill">JSTOR/Scopus</div>
-        <div class="skill-pill">Data Analysis</div>
-        <div class="skill-pill">Research Methods</div>
-        <div class="skill-pill">EBSCO</div>
-        <div class="skill-pill">Word</div>
-        <div class="skill-pill">Canva</div>
-        <div class="skill-pill">PowerPoint</div>
-        <div class="skill-pill">VS Code</div>
-        <div class="skill-pill">GitHub</div>
-        <div class="skill-pill">Render</div>
-        <div class="skill-pill">Public Speaking</div>
-      </div>
+    <div class="card pipeline-wrap tv reveal">
+      <img class="tv-light" src="assets/anim/pipeline-light.svg" alt="Research workflow: question, then design with validated scales and Qualtrics, collect through SONA and lab sessions, analyze in SPSS, R and Python, report in Quarto, and loop back to new questions" width="1000" height="262" loading="lazy">
+      <img class="tv-dark" src="assets/anim/pipeline-dark.svg" alt="" width="1000" height="262" loading="lazy">
     </div>
-
-    <!-- EXPERIENCE (full width) -->
-    <div class="full-width">
-      <div class="section-label">Experience</div>
-      <div class="exp-cols">
-        <div class="card">
-          <div class="card-title">Research Assistant — TAP Lab</div>
-          <div class="card-sub">Timing, Attention & Perception (MSU) · Nov 2025–Jan 2026</div>
-          <ul class="card-body">
-            <li>Recruited participants and collected data for a sound perception study on minimum time intervals for distinct tone perception</li>
-            <li>Presented experimental findings to lab members and academic audiences</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title">English Language Tutor</div>
-          <div class="card-sub">BRIDGES Program, MSU ·Oct 2025–Apr 2026</div>
-          <ul class="card-body">
-            <li>Delivered one-on-one tutoring to non-native speakers, improving their reading & writing comprehension, and verbal communication</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title">Research Project — Social Media & College Students</div>
-          <div class="card-sub">PSY 493, MSU · Aug–Dec 2025</div>
-          <ul class="card-body">
-            <li>Designed and conducted original research using Qualtrics and SONA for participant recruitment and data collection</li>
-            <li>Performed end-to-end SPSS analysis including regression and ANOVA; produced a formal paper and presented findings</li>
-          </ul>
-          <a class="project-link" href="Social%20Media%20Survey%20Research%20Project%20Report.pdf" target="_blank" rel="noopener noreferrer">View Social Media Survey Research Project Report (PDF)</a>
-        </div>
-        <div class="card">
-          <div class="card-title">Research Assistant Intern</div>
-          <div class="card-sub">DCS GPS Lab (Remote) · Jun–Aug 2025</div>
-          <ul class="card-body">
-            <li>Reviewed and analyzed 35+ peer-reviewed articles via JSTOR, Scopus, and EBSCO on positive emotions and job search success</li>
-            <li>Contributed to literature reviews and prepared research reports supporting behavioral studies</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title">Physical Activity Mentor</div>
-          <div class="card-sub">SpartanFit, MSU · Jan 2025–Apr 2026</div>
-          <ul class="card-body">
-            <li>Mentored students in setting and achieving fitness goals under the Spartan Active Program</li>
-            <li>Promoted campus wellness & healthy lifestyle habits</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title">Resident Assistant</div>
-          <div class="card-sub">Resident Education & Housing Services, MSU · Aug 2024–Apr 2026</div>
-          <ul class="card-body">
-            <li>Supported a community of 40+ students through programming, duty rounds, and peer crisis support</li>
-            <li>Fostered an inclusive and safe living environment</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title">Research Assistant — Psychology</div>
-          <div class="card-sub">Army Research Institute Project, MSU · Feb–May 2025</div>
-          <ul class="card-body">
-            <li>Transcribed and coded 50+ audio recordings using Audacity and organized findings in Excel</li>
-            <li>Maintained data accuracy and research integrity for ARI-funded work</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title">Undergraduate Teaching Assistant — PSY 295</div>
-          <div class="card-sub">Data Analysis in Psych Research · Jan–May 2025</div>
-          <ul class="card-body">
-            <li>Supported 50+ students through grading, proctoring, and individualized academic support</li>
-            <li>Coordinated RCPD accommodations and provided proctoring and note-taking support</li>
-          </ul>
-        </div>
-        <div class="card" style="border-color:rgba(96,165,250,0.5);">
-          <div class="card-title">🚀 Mission Control Specialist — NASA HERA</div>
-          <div class="card-sub">MSU × NASA · May–Aug 2024</div>
-          <ul class="card-body">
-            <li>Served as mission control liaison for NASA's Human Exploration Research Analog (HERA) Mars simulation</li>
-            <li>Managed crew communications and cross-department budget authorization</li>
-          </ul>
-                    <a class="project-link" href="Project FUSION Summer 2024 Certificate - Fnu Falak.pdf" target="_blank" rel="noopener noreferrer">View Project FUSION certificate (PDF)</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- CERTIFICATIONS (left) -->
-    <div>
-      <div class="section-label">Certifications</div>
-      <div class="card">
-        <a class="chip" href="Ethics%20and%20Regulations%20in%20Human%20Research.pdf" target="_blank" rel="noopener noreferrer">Ethics in Human Research (2025)</a>
-        <a class="chip" href="open%20mic.pdf" target="_blank" rel="noopener noreferrer">Open Mic Charity — Certificate of Appreciation (2024–2025)</a>
-        <a class="chip" href="CITI%20TRAINING.pdf" target="_blank" rel="noopener noreferrer">MSU CITI RCR Program</a>
-        <span class="chip"> <a class="project-link" href="Why people do certificate.pdf" target="_blank" rel="noopener noreferrer">Secrets of Psychology - Udemy </a></span>
-        <span class="chip"> <a class="project-link" href="panic attacks.pdf" target="_blank" rel="noopener noreferrer">Psychology diploma: Anxiety and Panic Attacks - Udemy </a></span>
-        <span class="chip"> <a class="project-link" href="Stress and anxiety udemy.pdf" target="_blank" rel="noopener noreferrer">Stress and Anxiety Management - Udemy </a></span>
-        <span class="chip"> <a class="project-link" href="my captain.pdf" target="_blank" rel="noopener noreferrer">Event Management - MyCaptain </a></span>
-
-      </div>
-    </div>
-
-    <!-- ACTIVITIES (right) -->
-    <div>
-      <div class="section-label">Clubs & Activities</div>
-      <div class="card">
-        <span class="chip">Founding Growth & Marketing Strategist, SheVinci App</span>
-        <span class="chip">Event Coordinator, Brown Girl Health Club</span>
-        <a class="chip" href="falak%20community%20service%20inner%20wheel%20certificate.pdf" target="_blank" rel="noopener noreferrer">Inner Wheel Club</a>
-        <a class="chip" href="EXTRACURRICULAR%20ACTIVITIES_FALAK.pdf" target="_blank" rel="noopener noreferrer">Model United Nations (MUN)</a>
-        <span class="chip"> <a class="project-link" href="English debate.pdf" target="_blank" rel="noopener noreferrer">English Debate Club </a></span>
-        <span class="chip"> <a class="project-link" href="hindi debate falak.pdf" target="_blank" rel="noopener noreferrer">Hindi Debate Club </a></span>
-        <span class="chip">Drama Club</span>
-        <span class="chip">Environment Club</span>
-        <span class="chip">Literature Club</span>
-        <span class="chip"> <a class="project-link" href="shot puit.pdf" target="_blank" rel="noopener noreferrer">Shot put</a></span>
-        <span class="chip">Award of Academic Excellence – DPS (2022)</span>
-        <a class="chip" href="open%20mic.pdf" target="_blank" rel="noopener noreferrer">Open Mic Charity Volunteer · Inner Wheel Club Navi Mumbai Sunrise (2024–2025)</a>
-        <a class="chip" href="National%20anthem%20record.png" target="_blank" rel="noopener noreferrer">Rashtragaan participant · Ministry of Culture, Azadi Ka Amrit Mahotsav (2021)</a>
-      </div>
-    </div>
-
-    <!-- LANGUAGES (full width at end) -->
-    <div class="full-width">
-      <div class="section-label">Languages</div>
-      <div class="card">
-        <div class="lang-row">
-          <span class="lang-label">Hindi</span>
-          <div class="lang-bar-bg"><div class="lang-bar-fill" data-width="100%"></div></div>
-          <span class="lang-tag">Native</span>
-        </div>
-        <div class="lang-row">
-          <span class="lang-label">Urdu</span>
-          <div class="lang-bar-bg"><div class="lang-bar-fill" data-width="100%"></div></div>
-          <span class="lang-tag">Native</span>
-        </div>
-        <div class="lang-row" style="margin-bottom:0">
-          <span class="lang-label">English</span>
-          <div class="lang-bar-bg"><div class="lang-bar-fill" data-width="95%"></div></div>
-          <span class="lang-tag">Fluent</span>
-        </div>
-      </div>
-    </div>
-
   </div>
-</div>
+</section>
 
-<div style="text-align:center; padding:20px; font-size:.90rem; color:rgba(176, 206, 234, 0.82);">Authorized to work in the U.S. on OPT beginning June 30, 2026</div>
+<!-- ================= GRADUATE WORK ================= -->
+<section class="section-alt" id="code">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Graduate work · UW–Madison</span>
+        <h2>Reproducible reports, <em class="accent">in code</em>.</h2>
+      </div>
+      <p>In the Data Science in Human Behavior program I write short research papers as Quarto documents. The analysis, the numbers in the text, and the figures all come from code, so anyone can re-run them.</p>
+    </div>
+    <div class="code-grid">
+      <article class="card code-card reveal">
+        <div class="tag-row" style="margin-bottom:0"><span class="tag hot">χ² test of independence</span><span class="tag">Python</span><span class="tag">Quarto</span></div>
+        <div class="q">Does a book’s cover color predict its genre?</div>
+<pre><span class="c"># Conduct the chi2 with chi2_contingency</span>
+x2, pval, degf, _ = <span class="k">chi2_contingency</span>(
+  pd.<span class="k">crosstab</span>(books[<span class="s">'book_genre'</span>],
+              books[<span class="s">'book_color'</span>]))</pre>
+        <p>A five-sentence research paper with a literature citation (BibTeX), stated hypotheses, and inline results computed from the data. <b>Result:</b> χ² = 1.992, df = 25, p = 1.000, so cover color is not associated with genre and the book club needs a better predictor.</p>
+        <div class="links">
+          <a class="link-arrow" href="https://falak1720.github.io/five-sent/" target="_blank" rel="noopener noreferrer">Live paper <svg><use href="#i-arrow"/></svg></a>
+          <a class="link-arrow" href="https://github.com/falak1720/five-sent" target="_blank" rel="noopener noreferrer">Source <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+      <article class="card code-card reveal">
+        <div class="tag-row" style="margin-bottom:0"><span class="tag hot">Pearson correlation</span><span class="tag">seaborn</span><span class="tag">Quarto</span></div>
+        <div class="q">Does petal width track petal length?</div>
+<pre>corr_val = df[[<span class="s">'petal_length'</span>, <span class="s">'petal_width'</span>]].<span class="k">corr</span>()…
+<span class="k">if</span> corr_val &gt; .8:
+  narrative = <span class="s">"a very strong positive correlation"</span></pre>
+        <p>A correlation analysis whose written conclusion is generated from the result itself, so the text can never disagree with the data. It includes a captioned, cross-referenced scatterplot plus regression, joint and hexbin views.</p>
+        <div class="links">
+          <a class="link-arrow" href="https://github.com/falak1720/ten-sent-corr" target="_blank" rel="noopener noreferrer">Source <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="section-alt" id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Experience</span>
+        <h2>Research, teaching, <em class="accent">community</em>.</h2>
+      </div>
+      <p>Eleven roles across labs, classrooms, startups, and campus life, most of them held at the same time as a full course load and a 3.9 GPA.</p>
+    </div>
+
+    <div class="impact reveal" aria-label="Impact at a glance">
+      <div><b data-count="211">211</b><span>study participants recruited &amp; analyzed</span></div>
+      <div><b><span data-count="50">50</span>+</b><span>audio recordings coded for an ARI project</span></div>
+      <div><b><span data-count="35">35</span>+</b><span>peer-reviewed articles reviewed</span></div>
+      <div><b><span data-count="50">50</span>+</b><span>students supported as a teaching assistant</span></div>
+      <div><b><span data-count="40">40</span>+</b><span>residents supported as an RA</span></div>
+      <div><b><span data-count="15">15</span>+</b><span>certificates, awards &amp; honors</span></div>
+    </div>
+
+    <div class="filters no-print" role="group" aria-label="Filter experience">
+      <button class="filter" type="button" data-filter="all" aria-pressed="true">All<span class="count">11</span></button>
+      <button class="filter" type="button" data-filter="research" aria-pressed="false">Research<span class="count">5</span></button>
+      <button class="filter" type="button" data-filter="teach" aria-pressed="false">Teaching &amp; mentoring<span class="count">3</span></button>
+      <button class="filter" type="button" data-filter="lead" aria-pressed="false">Leadership<span class="count">3</span></button>
+    </div>
+
+    <div class="timeline">
+      <article class="role" data-kind="research">
+        <div class="role-when">Nov 2025 – Jan 2026<br><span class="role-kind">Research</span></div>
+        <div>
+          <h3>Research Assistant</h3>
+          <div class="org">TAP Lab: Timing, Attention &amp; Perception · Michigan State University</div>
+          <ul>
+            <li>Recruited participants and collected data for a sound-perception study on the minimum time interval needed to perceive two tones as distinct.</li>
+            <li>Presented experimental findings to lab members and academic audiences.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role" data-kind="research">
+        <div class="role-when">Aug – Dec 2025<br><span class="role-kind">Research</span></div>
+        <div>
+          <h3>Student Researcher: Social Media &amp; College Students</h3>
+          <div class="org">PSY 493 Survey Research Methods · Michigan State University</div>
+          <ul>
+            <li>Designed and conducted original survey research (N = 211) using Qualtrics, with SONA for participant recruitment.</li>
+            <li>Ran end-to-end analysis in SPSS, including assumption checks, ANOVA, Welch’s <i>t</i>-tests, and correlations; co-wrote a formal report and presented the findings.</li>
+          </ul>
+          <a class="link-arrow" href="docs/social-media-survey-report.pdf" target="_blank" rel="noopener noreferrer">Report (PDF) <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="role" data-kind="research">
+        <div class="role-when">Jun – Aug 2025<br><span class="role-kind">Research</span></div>
+        <div>
+          <h3>Research Assistant Intern</h3>
+          <div class="org">DCS GPS Lab · Remote</div>
+          <ul>
+            <li>Reviewed and analyzed 35+ peer-reviewed articles via JSTOR, Scopus, and EBSCO on positive emotions and job-search success.</li>
+            <li>Contributed to literature reviews and prepared research reports supporting behavioral studies.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role" data-kind="research">
+        <div class="role-when">Feb – May 2025<br><span class="role-kind">Research</span></div>
+        <div>
+          <h3>Research Assistant: Psychology</h3>
+          <div class="org">U.S. Army Research Institute–funded project · Michigan State University</div>
+          <ul>
+            <li>Transcribed and coded 50+ audio recordings in Audacity and organized the findings in Excel.</li>
+            <li>Maintained data accuracy and research integrity for ARI-funded work.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role" data-kind="research">
+        <div class="role-when">May – Aug 2024<br><span class="role-kind">Research</span></div>
+        <div>
+          <h3>Mission Control Specialist: NASA HERA</h3>
+          <div class="org">Project FUSION · MSU × NASA (grant #80NSSC23K1124)</div>
+          <ul>
+            <li>Served as mission-control liaison for NASA’s Human Exploration Research Analog (HERA) Mars simulation.</li>
+            <li>Managed crew communications and cross-department budget authorization during multiteam data collection.</li>
+          </ul>
+          <a class="link-arrow" href="docs/nasa-fusion-certificate.pdf" target="_blank" rel="noopener noreferrer">Certificate (PDF) <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="role" data-kind="teach">
+        <div class="role-when">Oct 2025 – Apr 2026<br><span class="role-kind teach">Teaching</span></div>
+        <div>
+          <h3>English Language Tutor</h3>
+          <div class="org">BRIDGES Program · Michigan State University</div>
+          <ul>
+            <li>Delivered one-on-one tutoring to non-native speakers, strengthening their reading, writing, and verbal communication.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role" data-kind="teach">
+        <div class="role-when">Jan 2025 – Apr 2026<br><span class="role-kind teach">Mentoring</span></div>
+        <div>
+          <h3>Physical Activity Mentor</h3>
+          <div class="org">SpartanFit, Spartan Active Program · Michigan State University</div>
+          <ul>
+            <li>Mentored students in setting and reaching personal fitness goals.</li>
+            <li>Promoted campus wellness and healthy lifestyle habits.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role" data-kind="teach">
+        <div class="role-when">Jan – May 2025<br><span class="role-kind teach">Teaching</span></div>
+        <div>
+          <h3>Undergraduate Teaching Assistant: PSY 295</h3>
+          <div class="org">Data Analysis in Psychological Research · Michigan State University</div>
+          <ul>
+            <li>Supported 50+ students through grading, proctoring, and individualized academic help.</li>
+            <li>Coordinated RCPD accommodations, providing proctoring and note-taking support.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role" data-kind="lead">
+        <div class="role-when">Aug 2024 – Apr 2026<br><span class="role-kind lead">Leadership</span></div>
+        <div>
+          <h3>Resident Assistant</h3>
+          <div class="org">Residence Education &amp; Housing Services · Michigan State University</div>
+          <ul>
+            <li>Supported a community of 40+ students through programming, duty rounds, and peer crisis support.</li>
+            <li>Fostered an inclusive, safe living environment.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role" data-kind="lead">
+        <div class="role-when">Founding team<br><span class="role-kind lead">Startup</span></div>
+        <div>
+          <h3>Founding Growth &amp; Marketing Strategist</h3>
+          <div class="org">SheVinci (app startup)</div>
+          <ul>
+            <li>Joined the founding team to lead growth and marketing strategy for the app.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role" data-kind="lead">
+        <div class="role-when">Student organization<br><span class="role-kind lead">Leadership</span></div>
+        <div>
+          <h3>Event Coordinator</h3>
+          <div class="org">Brown Girl Health Club</div>
+          <ul>
+            <li>Coordinated events for a student health and wellness community.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Education</span>
+        <h2>Where I’m <em class="accent">trained</em>.</h2>
+      </div>
+    </div>
+    <div class="edu-grid">
+      <article class="card edu-card reveal">
+        <div class="when"><span>Fall 2026 – Spring 2027</span><span class="badge-now">● In progress</span></div>
+        <h3>University of Wisconsin–Madison</h3>
+        <p class="degree">M.S. in Psychology: Data Science in Human Behavior</p>
+        <div class="honors"><span class="tag">Statistical computing</span><span class="tag">Reproducible research</span><span class="tag">Python · R · Quarto</span></div>
+        <span class="seal" aria-hidden="true"></span>
+      </article>
+      <article class="card edu-card reveal">
+        <div class="when"><span>Graduated May 2026</span><span>GPA 3.9 / 4.0</span></div>
+        <h3>Michigan State University</h3>
+        <p class="degree">B.S. in Psychology · Minors in Human Behavior &amp; Social Services and Business</p>
+        <div class="honors"><span class="tag hot">Highest Honors</span><span class="tag">Dean’s List, every semester</span></div>
+        <span class="seal" aria-hidden="true"></span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section class="section-alt" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Toolkit</span>
+        <h2>Methods &amp; <em class="accent">tools</em>.</h2>
+      </div>
+      <p>What I use to move from a research question to a defensible answer.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="card skill-group reveal">
+        <h3>Analysis &amp; statistics</h3>
+        <p class="sub">Describing, testing, and reporting data</p>
+        <div class="pills">
+          <span class="pill">SPSS</span><span class="pill">R</span><span class="pill">Python</span><span class="pill">Quarto</span><span class="pill">Excel</span>
+          <span class="pill">ANOVA</span><span class="pill">t-tests</span><span class="pill">Regression</span><span class="pill">Correlation</span><span class="pill">Chi-square</span>
+        </div>
+      </div>
+      <div class="card skill-group reveal">
+        <h3>Research methods</h3>
+        <p class="sub">Designing and running studies ethically</p>
+        <div class="pills">
+          <span class="pill">Survey design</span><span class="pill">Qualtrics</span><span class="pill">SONA recruitment</span><span class="pill">Literature review</span>
+          <span class="pill">JSTOR · Scopus · EBSCO</span><span class="pill">Audio coding</span><span class="pill">Human-subjects ethics</span>
+        </div>
+      </div>
+      <div class="card skill-group reveal">
+        <h3>Tools &amp; communication</h3>
+        <p class="sub">Building, sharing, and presenting work</p>
+        <div class="pills">
+          <span class="pill">Git &amp; GitHub</span><span class="pill">VS Code</span><span class="pill">Render</span><span class="pill">Audacity</span>
+          <span class="pill">Canva</span><span class="pill">PowerPoint</span><span class="pill">Word</span><span class="pill">Public speaking</span>
+        </div>
+      </div>
+    </div>
+    <div class="langs reveal" aria-label="Languages">
+      <div class="lang"><b>Hindi</b><span>Native</span></div>
+      <div class="lang"><b>Urdu</b><span>Native</span></div>
+      <div class="lang"><b>English</b><span>Fluent, professional</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CREDENTIALS ================= -->
+<section id="credentials">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Certifications</span>
+        <h2>Verified <em class="accent">training</em>.</h2>
+      </div>
+      <p>Every certificate links to the original document.</p>
+    </div>
+    <div class="cred-grid">
+      <a class="cred reveal" href="docs/citi-rcr-certificate.pdf" target="_blank" rel="noopener noreferrer">
+        <span class="issuer">CITI Program · MSU</span>
+        <span class="title">Responsible Conduct of Research (RCR): Undergraduate Researchers</span>
+        <span class="foot">Feb 2025 · Record 67824842 <svg><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="cred reveal" href="https://www.citiprogram.org/verify/?w42921150-6acf-4e2b-bb63-9429eba36f2a-67824842" target="_blank" rel="noopener noreferrer">
+        <span class="issuer">Independently verifiable</span>
+        <span class="title">Verify the CITI RCR record on citiprogram.org</span>
+        <span class="foot">Official verification <svg><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="cred reveal" href="docs/ethics-human-research.pdf" target="_blank" rel="noopener noreferrer">
+        <span class="issuer">Human-subjects research</span>
+        <span class="title">Ethics and Regulations in Human Research</span>
+        <span class="foot">Nov 2025 <svg><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="cred reveal" href="docs/nasa-fusion-certificate.pdf" target="_blank" rel="noopener noreferrer">
+        <span class="issuer">NASA-funded · MSU</span>
+        <span class="title">Project FUSION: Multiteam System Data Collection</span>
+        <span class="foot">Jun 2024 <svg><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="cred reveal" href="docs/udemy-anxiety-panic.pdf" target="_blank" rel="noopener noreferrer">
+        <span class="issuer">Udemy · Accredited</span>
+        <span class="title">Psychology Diploma: Anxiety &amp; Panic Attacks</span>
+        <span class="foot">Jul 2024 <svg><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="cred reveal" href="docs/udemy-stress-anxiety.pdf" target="_blank" rel="noopener noreferrer">
+        <span class="issuer">Udemy · Accredited</span>
+        <span class="title">Stress &amp; Anxiety Management: Psychology</span>
+        <span class="foot">Mar 2024 <svg><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="cred reveal" href="docs/udemy-secrets-of-psychology.pdf" target="_blank" rel="noopener noreferrer">
+        <span class="issuer">Udemy</span>
+        <span class="title">Secrets of Psychology: Why People Do the Things They Do</span>
+        <span class="foot">Nov 2023 <svg><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="cred reveal" href="docs/mycaptain-event-management.pdf" target="_blank" rel="noopener noreferrer">
+        <span class="issuer">MyCaptain</span>
+        <span class="title">Event Management Course</span>
+        <span class="foot">Dec 2020 <svg><use href="#i-arrow"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LEADERSHIP & HONORS ================= -->
+<section class="section-alt" id="leadership">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Beyond the lab</span>
+        <h2>Leadership, service &amp; <em class="accent">honors</em>.</h2>
+      </div>
+      <p>Community work and early achievements that shaped how I lead and communicate.</p>
+    </div>
+
+    <div class="lead-grid">
+      <div class="card reveal">
+        <h3 class="card-h"><svg><use href="#i-heart"/></svg>Leadership &amp; service</h3>
+        <ul class="lead-list">
+          <li><span class="what">Founding Growth &amp; Marketing Strategist, SheVinci App</span><span class="yr">Startup</span></li>
+          <li><span class="what">Event Coordinator, Brown Girl Health Club</span><span class="yr">MSU</span></li>
+          <li>
+            <span class="what">Volunteer, Open Mic Charity</span><span class="yr">2024–25</span>
+            <span class="desc">Inner Wheel Club of Navi Mumbai Sunrise (District 314). <a class="proof" href="docs/inner-wheel-open-mic.pdf" target="_blank" rel="noopener noreferrer">Certificate ↗</a></span>
+          </li>
+          <li>
+            <span class="what">Community Service Volunteer, Inner Wheel Club</span><span class="yr">2021</span>
+            <span class="desc">Painted shoes for girls at Premdan, made seed balls for a plantation drive, distributed food and clothing to an old-age home and orphanage, and led storytelling for children at St. Jude’s Home (ACTREC, Tata Memorial). <a class="proof" href="docs/inner-wheel-community-service.pdf" target="_blank" rel="noopener noreferrer">Certificate ↗</a></span>
+          </li>
+          <li>
+            <span class="what">Model United Nations Delegate</span><span class="yr">2018–19</span>
+            <span class="desc">BBPSMUN: UNHRC (2018) and UNDP (2019). <a class="proof" href="docs/mun-and-extracurriculars.pdf" target="_blank" rel="noopener noreferrer">Documents ↗</a></span>
+          </li>
+          <li><span class="what">Drama, Environment &amp; Literature Clubs</span><span class="yr">School</span></li>
+        </ul>
+      </div>
+
+      <div class="card reveal">
+        <h3 class="card-h"><svg><use href="#i-award"/></svg>Honors &amp; awards</h3>
+        <ul class="lead-list">
+          <li><span class="what">Highest Honors &amp; Dean’s List, every semester</span><span class="yr">MSU 2026</span></li>
+          <li><span class="what">Award of Academic Excellence</span><span class="yr">DPS 2022</span></li>
+          <li>
+            <span class="what">Rashtragaan national anthem participant</span><span class="yr">2021</span>
+            <span class="desc">Ministry of Culture, Government of India, for Azadi Ka Amrit Mahotsav. <a class="proof" href="docs/rashtragaan-certificate.png" target="_blank" rel="noopener noreferrer">Certificate ↗</a></span>
+          </li>
+          <li>
+            <span class="what">Certificate of Appreciation: “Emerging Branches of Psychology”</span><span class="yr">2020–21</span>
+            <span class="desc">Delhi Public School, Navi Mumbai, for a presentation on emerging fields in psychology.</span>
+          </li>
+          <li>
+            <span class="what">English Debate: 3rd place · Hindi Debate: Certificate of Merit</span><span class="yr">2018–19</span>
+            <span class="desc">Bal Bharati Public School, Navi Mumbai. <a class="proof" href="docs/english-debate.pdf" target="_blank" rel="noopener noreferrer">English ↗</a> &nbsp;<a class="proof" href="docs/hindi-debate.pdf" target="_blank" rel="noopener noreferrer">Hindi ↗</a></span>
+          </li>
+          <li><span class="what">1st place, local essay-writing competition</span><span class="yr">2018</span></li>
+          <li>
+            <span class="what">Shot Put (Girls): 3rd place</span><span class="yr">2018</span>
+            <span class="desc"><a class="proof" href="docs/shot-put.pdf" target="_blank" rel="noopener noreferrer">Certificate ↗</a></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STROOP LAB ================= -->
+<section id="lab">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Try it</span>
+        <h2>Be my participant for <em class="accent">30 seconds</em>.</h2>
+      </div>
+      <p>A classic in psychology: the Stroop task. Click the <b>ink color</b>, not the word. I’ll measure your reaction times and show you your own Stroop effect.</p>
+    </div>
+
+    <div class="card lab reveal">
+      <div class="lab-stage" id="lab-stage" aria-live="polite">
+        <!-- intro -->
+        <div id="lab-intro">
+          <div class="trial-meta">12 TRIALS · ABOUT 30 SECONDS</div>
+          <div class="stim" aria-hidden="true"><span style="color:#3e7bfa">RED</span></div>
+          <p style="color:var(--muted);margin:22px auto 26px;max-width:28em">Answer as fast as you can. Use the buttons, or press <b>R</b>, <b>B</b>, <b>G</b>, or <b>Y</b> on your keyboard.</p>
+          <button class="btn btn-primary" type="button" id="lab-start">Start the experiment</button>
+        </div>
+        <!-- running -->
+        <div id="lab-run" class="lab-run" hidden>
+          <div class="trial-meta" id="lab-count">TRIAL 1 / 12</div>
+          <div class="stim" id="lab-stim">+</div>
+          <div class="choices" role="group" aria-label="Ink color">
+            <button class="choice" type="button" data-c="red"><span class="sw" style="background:#e5484d"></span>Red<kbd>R</kbd></button>
+            <button class="choice" type="button" data-c="blue"><span class="sw" style="background:#3e7bfa"></span>Blue<kbd>B</kbd></button>
+            <button class="choice" type="button" data-c="green"><span class="sw" style="background:#2fa86b"></span>Green<kbd>G</kbd></button>
+            <button class="choice" type="button" data-c="yellow"><span class="sw" style="background:#e0a800"></span>Yellow<kbd>Y</kbd></button>
+          </div>
+        </div>
+        <!-- results -->
+        <div id="lab-done" hidden class="lab-results">
+          <div class="trial-meta">YOUR STROOP EFFECT</div>
+          <div class="big" id="lab-effect">+0 ms</div>
+          <p style="color:var(--ink-soft)" id="lab-sentence"></p>
+          <div class="rt-bars">
+            <div class="rt-row"><span>Matching ink</span><span class="track"><span class="fill" id="lab-bar-c"></span></span><span class="v" id="lab-v-c">–</span></div>
+            <div class="rt-row incon"><span>Clashing ink</span><span class="track"><span class="fill" id="lab-bar-i"></span></span><span class="v" id="lab-v-i">–</span></div>
+          </div>
+          <p style="font-size:.85rem;color:var(--muted);margin-bottom:18px" id="lab-acc"></p>
+          <button class="btn btn-ghost" type="button" id="lab-again">Run it again</button>
+        </div>
+      </div>
+      <aside class="lab-side">
+        <h3>What’s going on?</h3>
+        <p>Reading is so automatic for fluent readers that the <i>word</i> competes with the <i>ink color</i> you’re asked to name. When they clash, you slow down. This is called interference.</p>
+        <p>First described by J. Ridley Stroop in 1935, it’s one of the most replicated effects in psychology and a standard measure of attention and cognitive control.</p>
+        <p>I designed this demo the way I’d design a real study: a balanced mix of matching and clashing trials, randomized order, and only correct responses counted toward reaction time.</p>
+        <p class="fine">Your responses stay in your browser. Nothing is stored or sent anywhere.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h2>Let’s build better evidence about <em class="accent">people</em>.</h2>
+    <p class="lede">I’m open to research assistant, lab coordinator, and behavioral data roles. The fastest way to reach me is email.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="mailto:falak@wisc.edu"><svg><use href="#i-mail"/></svg>falak@wisc.edu</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/fnufalak" target="_blank" rel="noopener noreferrer"><svg><use href="#i-linkedin"/></svg>Connect on LinkedIn</a>
+    </div>
+    <div class="contact-list">
+      <a href="tel:+15173027784"><svg><use href="#i-phone"/></svg>(517) 302-7784</a>
+      <a href="https://github.com/falak1720" target="_blank" rel="noopener noreferrer"><svg><use href="#i-github"/></svg>github.com/falak1720</a>
+      <span><svg><use href="#i-pin"/></svg>Madison, Wisconsin</span>
+    </div>
+    <div class="closing-wave tv">
+      <img class="tv-light" src="assets/anim/footer-light.svg" alt="Thanks for stopping by. Let's build better evidence about people." width="1200" height="170" loading="lazy">
+      <img class="tv-dark" src="assets/anim/footer-dark.svg" alt="" width="1200" height="170" loading="lazy">
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© <span id="year">2026</span> Falak (legal name: Fnu Falak)</span>
+    <span>Authorized to work in the U.S. on OPT beginning June 30, 2026</span>
+    <a href="#top">Back to top ↑</a>
+  </div>
+</footer>
 
 <script>
-  // Stars
-  const starsEl = document.getElementById('stars');
-  for (let i = 0; i < 80; i++) {
-    const s = document.createElement('div');
-    s.className = 'star';
-    const size = Math.random() * 2.5 + 0.5;
-    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;
-    starsEl.appendChild(s);
+(function () {
+  var root = document.documentElement;
+
+  /* Year */
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  /* Theme toggle */
+  var toggle = document.getElementById('theme-toggle');
+  function currentTheme() {
+    var set = root.getAttribute('data-theme');
+    if (set) return set;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  toggle.addEventListener('click', function () {
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  /* Mobile menu */
+  var menuBtn = document.getElementById('menu-btn');
+  var links = document.getElementById('nav-links');
+  function closeMenu() { links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
+  menuBtn.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(open));
+  });
+  links.addEventListener('click', function (e) { if (e.target.tagName === 'A') closeMenu(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
+
+  /* Nav border on scroll */
+  var nav = document.getElementById('nav');
+  function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 8); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* Active section highlighting */
+  var navLinks = Array.prototype.slice.call(links.querySelectorAll('a'));
+  var sections = navLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          navLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { spy.observe(s); });
   }
 
-  // Animate language bars on load
-  function animateLangBars() {
-    document.querySelectorAll('.lang-bar-fill').forEach(b => {
-      const w = b.dataset.width;
-      b.style.width = '0%';
-      setTimeout(() => { b.style.width = w; }, 200);
+  /* Reveal on scroll */
+  var revealEls = document.querySelectorAll('.reveal, .bars');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el, i) {
+      if (el.classList.contains('reveal')) el.style.transitionDelay = Math.min((i % 4) * 60, 180) + 'ms';
+      io.observe(el);
     });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('in'); });
   }
-  animateLangBars();
 
-  // Scroll-reveal cards
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
+  /* Experience filter */
+  var filters = document.querySelectorAll('.filter');
+  var roles = document.querySelectorAll('.role');
+  filters.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.getAttribute('data-filter');
+      filters.forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+      roles.forEach(function (r) { r.hidden = !(f === 'all' || r.getAttribute('data-kind') === f); });
+    });
+  });
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SVGNS = 'http://www.w3.org/2000/svg';
+
+  /* ---------- Sky: twinkling stars, a constellation, shooting stars ---------- */
+  var sky = document.getElementById('sky');
+  var hero = document.getElementById('top');
+  function rand(a, b) { return a + Math.random() * (b - a); }
+  function el(tag, attrs) {
+    var n = document.createElementNS(SVGNS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  function buildSky() {
+    if (!sky || !hero) return;
+    var w = hero.clientWidth, h = hero.clientHeight;
+    sky.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    sky.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+    while (sky.firstChild) sky.removeChild(sky.firstChild);
+    var count = Math.round(w * h / 9000);
+    for (var i = 0; i < count; i++) {
+      var c = el('circle', { cx: rand(0, w).toFixed(1), cy: rand(0, h).toFixed(1), r: rand(.5, 1.6).toFixed(2), 'class': 'st' });
+      c.style.animationDelay = (-rand(0, 5)).toFixed(2) + 's';
+      c.style.animationDuration = rand(2.5, 6).toFixed(2) + 's';
+      sky.appendChild(c);
+    }
+    // A small constellation near the top of the hero that rises like a trend line
+    var x0 = w * .52, y0 = h * .26, pts = [];
+    for (var j = 0; j < 7; j++) pts.push([x0 + j * Math.min(56, w * .05) + rand(-8, 8), y0 - j * 9 + rand(-14, 14)]);
+    var d = 'M' + pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L');
+    var path = el('path', { d: d, 'class': 'cl', pathLength: 1 });
+    path.style.animationDelay = '1.2s';
+    sky.appendChild(path);
+    pts.forEach(function (p, k) {
+      var s = el('circle', { cx: p[0].toFixed(1), cy: p[1].toFixed(1), r: 2.2, 'class': 'st' });
+      s.style.animationDuration = '3s'; s.style.animationDelay = (k * .2) + 's';
+      sky.appendChild(s);
+    });
+    if (!reduceMotion) {
+      var defs = el('defs', {});
+      var lg = el('linearGradient', { id: 'trail', x1: 0, x2: 1 });
+      lg.appendChild(el('stop', { offset: 0, 'stop-color': 'currentColor', 'stop-opacity': 0 }));
+      lg.appendChild(el('stop', { offset: 1, 'stop-color': 'currentColor', 'stop-opacity': .9 }));
+      defs.appendChild(lg); sky.appendChild(defs);
+      [[w * .08, h * .08, 3], [w * .45, h * .04, 9.5]].forEach(function (s) {
+        var g = el('g', { 'class': 'shoot', transform: 'translate(' + s[0].toFixed(0) + ' ' + s[1].toFixed(0) + ') rotate(20)' });
+        var inner = el('g', {});
+        inner.appendChild(el('rect', { x: 0, y: -1, width: 110, height: 1.8, rx: 1, fill: 'url(#trail)' }));
+        inner.style.color = 'var(--accent)';
+        inner.style.animation = 'shoot 13s linear ' + s[2] + 's infinite';
+        inner.style.opacity = 0;
+        g.style.opacity = 1;
+        g.appendChild(inner); sky.appendChild(g);
+      });
+    }
+  }
+  buildSky();
+  var skyTimer;
+  window.addEventListener('resize', function () { clearTimeout(skyTimer); skyTimer = setTimeout(buildSky, 250); });
+
+  /* ---------- Headline: word-by-word reveal ---------- */
+  var words = document.querySelector('#hero-title .words');
+  if (words && !reduceMotion) {
+    var frag = document.createDocumentFragment(), idx = 0;
+    Array.prototype.slice.call(words.childNodes).forEach(function (node) {
+      if (node.nodeType === 3) {
+        node.textContent.split(/(\s+)/).forEach(function (part) {
+          if (!part) return;
+          if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+          var s = document.createElement('span'); s.className = 'w'; s.textContent = part;
+          s.style.animationDelay = (0.15 + idx++ * 0.06).toFixed(2) + 's';
+          frag.appendChild(s);
+        });
+      } else {
+        var s2 = document.createElement('span'); s2.className = 'w'; s2.appendChild(node.cloneNode(true));
+        s2.style.animationDelay = (0.15 + idx++ * 0.06).toFixed(2) + 's';
+        frag.appendChild(s2);
       }
     });
-  }, { threshold: 0.08 });
+    words.innerHTML = ''; words.appendChild(frag);
+  }
 
-  document.querySelectorAll('.card, .edu-card, .contact-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(16px)';
-    el.style.transition = 'opacity .4s ease, transform .4s ease, border-color .25s';
-    observer.observe(el);
-  });
+  /* ---------- Typing line ---------- */
+  var typed = document.getElementById('typed');
+  var phrases = [
+    'turning human behavior into evidence',
+    'survey design → SPSS / R / Python → Quarto',
+    'ex mission control · NASA HERA Mars analog',
+    'currently: reproducible stats reports in Quarto'
+  ];
+  if (typed) {
+    if (reduceMotion) { typed.textContent = '› ' + phrases[0]; }
+    else {
+      var pi = 0, ci = 0, del = false;
+      (function tick() {
+        var full = '› ' + phrases[pi];
+        if (!del) { ci++; typed.textContent = full.slice(0, ci); if (ci === full.length) { del = true; return setTimeout(tick, 1900); } return setTimeout(tick, 42); }
+        ci--; typed.textContent = full.slice(0, ci);
+        if (ci === 0) { del = false; pi = (pi + 1) % phrases.length; return setTimeout(tick, 350); }
+        setTimeout(tick, 18);
+      })();
+    }
+  }
 
-  // Stagger reveal timing for a more dynamic scan effect.
-  document.querySelectorAll('.card, .edu-card, .contact-card').forEach((el, i) => {
-    el.style.transitionDelay = `${Math.min(i * 0.05, 0.3)}s`;
-  });
+  /* ---------- Count-up numbers ---------- */
+  var counters = document.querySelectorAll('[data-count]');
+  function countUp(elx) {
+    var target = parseFloat(elx.getAttribute('data-count')), dec = parseInt(elx.getAttribute('data-dec') || '0', 10);
+    if (reduceMotion) { elx.textContent = target.toFixed(dec); return; }
+    var start = performance.now(), dur = 1300;
+    (function step(now) {
+      var p = Math.min((now - start) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+      elx.textContent = (target * e).toFixed(dec);
+      if (p < 1) requestAnimationFrame(step);
+    })(start);
+  }
+  if ('IntersectionObserver' in window) {
+    var cio = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { countUp(en.target); cio.unobserve(en.target); } });
+    }, { threshold: .6 });
+    counters.forEach(function (c) { c.textContent = '0'; cio.observe(c); });
+  }
 
-  // Gentle 3D tilt on cards for an interactive feel.
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const rx = ((y / rect.height) - 0.5) * -4;
-      const ry = ((x / rect.width) - 0.5) * 6;
-      card.style.transform = `perspective(850px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  /* ---------- Scroll progress ---------- */
+  var prog = document.getElementById('progress');
+  function onProg() {
+    var max = document.documentElement.scrollHeight - innerHeight;
+    prog.style.transform = 'scaleX(' + (max > 0 ? scrollY / max : 0) + ')';
+  }
+  onProg(); window.addEventListener('scroll', onProg, { passive: true });
+
+  /* ---------- Stroop experiment ---------- */
+  (function () {
+    var INK = { red: '#e5484d', blue: '#3e7bfa', green: '#2fa86b', yellow: '#e0a800' };
+    var KEYS = { r: 'red', b: 'blue', g: 'green', y: 'yellow' };
+    var NAMES = Object.keys(INK);
+    var intro = document.getElementById('lab-intro'), run = document.getElementById('lab-run'), done = document.getElementById('lab-done');
+    var stim = document.getElementById('lab-stim'), countEl = document.getElementById('lab-count');
+    if (!intro) return;
+    var trials = [], t = 0, shownAt = 0, accepting = false, results = [];
+
+    function shuffle(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+    function makeTrials() {
+      var out = [];
+      for (var i = 0; i < 6; i++) { var c = NAMES[i % 4]; out.push({ word: c, ink: c, congruent: true }); }
+      for (var k = 0; k < 6; k++) {
+        var w = NAMES[k % 4], others = NAMES.filter(function (n) { return n !== w; });
+        out.push({ word: w, ink: others[Math.floor(Math.random() * others.length)], congruent: false });
+      }
+      return shuffle(out);
+    }
+    function show(which) { intro.hidden = which !== 'intro'; run.hidden = which !== 'run'; done.hidden = which !== 'done'; }
+    function next() {
+      if (t >= trials.length) return finish();
+      countEl.textContent = 'TRIAL ' + (t + 1) + ' / ' + trials.length;
+      stim.className = 'stim fix'; stim.style.color = ''; stim.textContent = '+';
+      accepting = false;
+      setTimeout(function () {
+        var tr = trials[t];
+        stim.className = 'stim'; stim.textContent = tr.word.toUpperCase(); stim.style.color = INK[tr.ink];
+        shownAt = performance.now(); accepting = true;
+      }, 450 + Math.random() * 250);
+    }
+    function answer(color, btn) {
+      if (!accepting) return;
+      accepting = false;
+      var tr = trials[t], rt = performance.now() - shownAt, ok = color === tr.ink;
+      results.push({ congruent: tr.congruent, rt: rt, ok: ok });
+      if (btn) { btn.classList.add(ok ? 'flash-ok' : 'flash-bad'); setTimeout(function () { btn.classList.remove('flash-ok', 'flash-bad'); }, 250); }
+      t++; next();
+    }
+    function mean(a) { return a.length ? a.reduce(function (s, x) { return s + x; }, 0) / a.length : NaN; }
+    function finish() {
+      show('done');
+      var con = results.filter(function (r) { return r.ok && r.congruent; }).map(function (r) { return r.rt; });
+      var inc = results.filter(function (r) { return r.ok && !r.congruent; }).map(function (r) { return r.rt; });
+      var mc = mean(con), mi = mean(inc), correct = results.filter(function (r) { return r.ok; }).length;
+      var eff = mi - mc;
+      var effEl = document.getElementById('lab-effect'), sent = document.getElementById('lab-sentence');
+      if (isNaN(eff)) {
+        effEl.textContent = 'Not enough data';
+        sent.textContent = 'You need at least one correct answer in each condition. Give it another go!';
+      } else {
+        effEl.textContent = (eff >= 0 ? '+' : '−') + Math.abs(Math.round(eff)) + ' ms';
+        sent.textContent = eff > 40 ? 'Clashing ink slowed you down by about ' + Math.round(eff) + ' ms. That’s textbook Stroop interference: your brain read the word before it named the color.'
+          : eff > -40 ? 'Barely any interference. That’s strong cognitive control (or a lucky run, so try it again and compare).'
+          : 'You were actually faster on clashing trials, which is unusual. With only 12 trials, noise is real; run it again!';
+      }
+      var max = Math.max(mc || 0, mi || 0) || 1;
+      document.getElementById('lab-v-c').textContent = isNaN(mc) ? '–' : Math.round(mc) + ' ms';
+      document.getElementById('lab-v-i').textContent = isNaN(mi) ? '–' : Math.round(mi) + ' ms';
+      var bc = document.getElementById('lab-bar-c'), bi = document.getElementById('lab-bar-i');
+      bc.style.width = '0'; bi.style.width = '0';
+      requestAnimationFrame(function () { requestAnimationFrame(function () {
+        bc.style.width = (isNaN(mc) ? 0 : mc / max * 100) + '%';
+        bi.style.width = (isNaN(mi) ? 0 : mi / max * 100) + '%';
+      }); });
+      document.getElementById('lab-acc').textContent = 'Accuracy: ' + correct + ' / ' + results.length + ' correct. Mean reaction times use correct answers only.';
+    }
+    function start() { trials = makeTrials(); t = 0; results = []; show('run'); next(); }
+    document.getElementById('lab-start').addEventListener('click', start);
+    document.getElementById('lab-again').addEventListener('click', start);
+    run.querySelectorAll('.choice').forEach(function (b) { b.addEventListener('click', function () { answer(b.getAttribute('data-c'), b); }); });
+    document.addEventListener('keydown', function (e) {
+      if (run.hidden || e.ctrlKey || e.metaKey || e.altKey) return;
+      var c = KEYS[e.key.toLowerCase()];
+      if (c) { e.preventDefault(); answer(c, run.querySelector('[data-c="' + c + '"]')); }
     });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(850px) rotateX(0deg) rotateY(0deg)';
-    });
+  })();
+
+  /* Save as PDF */
+  var printBtn = document.getElementById('print-cv');
+  if (printBtn) printBtn.addEventListener('click', function () {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    window.print();
   });
+})();
 </script>
 </body>
 </html>
